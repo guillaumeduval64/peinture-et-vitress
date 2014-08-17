@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}Intranet{% endblock %}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" href="{{ asset('bundles/myappap/css/satisfaction.css') }}" type="text/css" media="all" />
+ 
+    </head>
+    <body>
+                     <div id="logoSatisfaction">
+            <img src="{{ asset('bundles/myappap/images/logo.png') }}" title="Client"/>
+            </div>
+                <div id="satisfaction">
+                    <p><b><h2>Merci de votre participation!
+                    <br> Et surtout merci de nous avoir choisi..</h2></b></p>
+                <p>  Grâce à vous nous pouvons améliorer notre service et répondre au mieux à vos attentes.
+                Finalement, sachez que tout tips est laissé à votre discrétion.</p>
+                <p>Nous espérons vous revoir bientôt..</p>
+                
+{% if  production.contratCree  == 1 %}
+                
+                <b>Pour recevoir votre facture par mail </b>(remplissez le champ avec votre adresse courriel et envoyer)
+                 <br> 
+                    <form action="" method="post" {{ form_enctype(form) }}>
+                    <div class="error">
+                        {{ form_errors(form) }}
+                    </div>
+                <table>
+                    <tr>
+                        <td>{{ form_label(form.email) }}</td>
+                        <td>    
+                        {{ form_errors(form.email) }}
+                        {{ form_widget(form.email) }}
+                        </td>
+
+                        {{ form_rest(form) }}
+                <br>
+                <td>
+                <input type="submit" value="Envoyer" title="Envoyer"/>  
+                </td>
+                </tr>
+
+                </table>
+                </form>               
+
+                            {% if messageValidation %}
+<p><b><input type="image" src="{{ asset('bundles/myappap/images/check.png') }}" /> {{ messageValidation }}</b></p>
+<p><b><h2>Enfin terminé pour vous :)</h2></b></p>
+
+{% endif %}
+{% else %}
+
+
+
+                <b>Pour recevoir un mail proposant nos services l'an prochain inscrivez votre courriel...</b>
+                 <br> 
+                    <form action="" method="post" {{ form_enctype(form) }}>
+                    <div class="error">
+                        {{ form_errors(form) }}
+                    </div>
+                <table>
+                    <tr>
+                        <td>{{ form_label(form.email) }}</td>
+                        <td>    
+                        {{ form_errors(form.email) }}
+                        {{ form_widget(form.email) }}
+                        </td>
+
+                        {{ form_rest(form) }}
+                <br>
+                <td>
+                <input type="submit" value="Envoyer" title="Envoyer"/>  
+                </td>
+                </tr>
+
+                </table>
+                </form>               
+
+                            {% if messageValidation %}
+<p><b><input type="image" src="{{ asset('bundles/myappap/images/check.png') }}" /> {{ messageValidation }}</b></p>
+<p><b><h2>Enfin terminé pour vous :)</h2></b></p>
+{% endif %}
+{% endif %}
+                </div>
+
+          
+   
+             <a href="{{ path('myapp_satisfaction_equipe', { 'id': production.id }) }}"><img src="{{ asset('bundles/myappap/images/pencil.png') }}"  title="Modifier"/></a>  
+             </body>
+</html>

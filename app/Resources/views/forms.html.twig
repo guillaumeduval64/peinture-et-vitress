@@ -1,0 +1,111 @@
+{% block form_row %}
+{% spaceless %}
+    <div class="control-group{{ errors|length>0 ? ' error' : '' }}">
+        {{ form_label(form) }}
+
+        <div class="control-class">
+	        {{ form_errors(form) }}
+	        {{ form_widget(form) }}
+        </div>
+    </div>
+{% endspaceless %}
+{% endblock form_row %}
+
+
+{% block checkbox_widget %}
+{% spaceless %}
+<tr>
+    <td>
+        <label class="input-control checkbox">
+            <input type="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
+            <span class="helper">{{ form_label(form) }}</span>
+        </label>
+</td>
+</tr>
+
+{% endspaceless %}
+{% endblock checkbox_widget %}
+
+{% block form_label %}
+{% spaceless %}
+    {% if label is not sameas(false) %}
+        {% if not compound %}
+            {% set label_attr = label_attr|merge({'for': id}) %}
+        {% endif %}
+        {% if required %}
+            {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
+        {% endif %}
+        {% if label is empty %}
+            {% set label = name|humanize %}
+        {% endif %}
+            {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' control-label')|trim}) %}
+        <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>{{ label|trans({}, translation_domain) }}</label>
+    {% endif %}
+{% endspaceless %}
+{% endblock form_label %}
+
+
+{% block choice_widget_expanded %}
+{% spaceless %}
+    <div {{ block('widget_container_attributes') }}>
+    {% for child in form %}
+        {{ form_widget(child) }}
+    {% endfor %}
+    </div>
+{% endspaceless %}
+{% endblock choice_widget_expanded %}
+
+
+{% block radio_widget -%}
+
+
+ <label class="radio">
+
+    <input type="radio" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} class="radio1" name="houseType" data-toggle="radioo"  />
+   {{ label }}
+     </label>
+{%- endblock radio_widget %}
+
+
+{% block collection_widget -%}
+    {% if prototype is defined %}
+<table id="parcelTable" class="table table-bordered table-striped table-hover">
+                                  <thead>
+                                    <tr>
+                                        <th><center>Type de fenêtre</center></th>
+                                        <th><center>Nombre</center></th>
+                                        <th><center>Description</center></th>
+                                    </tr>
+                                  </thead>
+
+        {%- set attr = attr|merge({'data-prototype': form_row(prototype) }) -%}
+    {% endif %}
+    </table>
+    {{- block('form_widget') -}}
+{%- endblock collection_widget %}
+
+
+
+
+
+
+{% block frontend_superbundle_fenetre_row %}
+  <table id="parcelTable" class="table table-bordered table-striped table-hover">
+<tbody>                       
+                                    <tr data-parcel="1">
+                                        <td><span class="fenetreType">
+                                              {{ form_row(form.type, {'label': false}) }}
+
+                                        </span></td>
+                                        <td>
+   {{ form_row(form.nombre, {'attr': {'class': 'form-control spinner'}}) }}
+<a href="#" class="">Supprimer</a>
+                                        </td>
+                                        <td>
+                                              {{ form_row(form.description, {'attr': {'class': 'form-control'}}) }}
+
+                                        </td>
+                                    </tr>
+</tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,131 @@
+{% extends 'MyAppApBundle:ContratClient:voirLayout.html.twig' %}
+
+{% block contrat %}
+<h2>{{ contrat.contratEstimation }}: {{ contrat.numero }}</h2>
+{% endblock %}
+{% block logo %}
+
+{% endblock %}
+
+{% block travailleurAutonome %}
+
+<table>
+    <tr><td><h2>Travailleur Autonome:</h2></td></tr>
+    <tr><td></td></tr>
+    <tr>
+        <td><b>Nom:</b> DUVAL <b>Prenom:</b> Guillaume</td> 
+    </tr>   
+    <tr><td></td></tr>
+    <tr>
+        <td><b>Adresse:</b> #2, 100 Bd Saint-Joseph ouest </td>
+        </tr>
+        <tr>
+        <td><b>Ville:</b> Montréal</td>
+        <td><b>Cp:</b> H2T-2P6</td>
+    </tr>
+
+{% endblock %}
+
+
+{% block client %}
+
+    <tr><td><h2>Client:</h2></td></tr>
+    <tr><td></td></tr>
+    <tr>
+        <td><b>Nom:</b> {{ contrat.production.client.nom|upper }}</td> 
+        <td><b>Prenom:</b> {{ contrat.production.client.prenom|capitalize }}</td> 
+    </tr> 
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+    <tr>
+        <td><b>Numero:</b> {{ contrat.production.client.number}} </td>
+        <td><b>Rue:</b> {{ contrat.production.client.street|capitalize }}</td>
+        </tr>
+        <tr>
+        <td><b>Ville:</b> {{ contrat.production.client.city.city|capitalize }}</td>
+        <td><b>Cp:</b> {{ contrat.production.client.pc|upper }}</td>
+</tr>
+<tr>
+        <td><b>Telephone:</b> {{ contrat.production.client.phoneNumber}}</td>
+        <td><b>Email:</b> {{ contrat.production.client.email }}</td>
+        </tr>
+</table>
+{% endblock %}
+
+{% block service %}
+<h1>Détails {{ contrat.contratEstimation|lower }}: </h1>
+<table>
+{% for s in contrat.clientService %}
+<table>
+    <tr>
+        <td>{{ s.service.type }}</td>
+        <td>{{ s.prix|number_format(2, ',', '.') }} $</td></tr> 
+    <tr> 
+        <td>Note: {{ s.note|capitalize }}</td>
+    </tr>    
+</table>
+        <br>
+
+{% else %}
+<table>
+    <tr>
+	<td>Aucun Services trouvés</td>
+    </tr>
+</table>
+{% endfor %}
+<table>
+        <tr> 
+            <td>Total:</td>
+            <td>{{ total['0']['1']|number_format(2, ',', '.') }} $</td>
+        </tr> 
+                <tr> 
+            <td>Dépôt:</td>
+            <td>{{ contrat.depot|number_format(2, ',', '.') }} $</td>
+        </tr> 
+        <tr> 
+            <td></td>
+            </tr>
+                <tr> 
+            <td>Balance:</td>
+            <td>{{ balance|number_format(2, ',', '.') }} $</td>
+        </tr> 
+</table>
+
+{% endblock %}
+
+{% block note %}
+<h3>Détails additionnels:</h3>
+{{ contrat.production.note|capitalize}}
+{% endblock %}
+{% block date %}
+<table>
+    <tr>
+        <td>Date de production: {{ contrat.production.dateProd|date('d/m/y') }}</td> 
+    </tr>
+</table>
+{% endblock %}
+{% block signature %}
+<table>
+    <tr>
+        <td>
+            Date signature: ____ / ____ / ________
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Signature Entrepreneur:
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Signature client:
+        </td>
+    </tr>
+
+</table>
+{% endblock %}
+{% block clauses %}
+<p><b>Termes et Conditions du contrat:</b></p>
+<p>Devis:L'ensemble des détails des travaux à executer est present sur le devis. Aucuns travaux non-inscrits ne seront effectués.</p>
+<p>Défauts non-visibles: Le contrat est effectué aprés une inspection visuelle or advenant des difficultés qui n'auraient pu être décelées lors du devis, une réévaluation sera faite avec le client suite aux défauts apparus.</p>
+{% endblock %}

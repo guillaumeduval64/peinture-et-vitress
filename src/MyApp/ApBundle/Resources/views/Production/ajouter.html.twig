@@ -1,0 +1,16 @@
+{% extends 'MyAppApBundle::layout.html.twig' %}
+           
+{% block title %}<h1>Ajouter une Production</h1>{% endblock %}
+
+{% block content %}
+{% if message %}
+<p>{{ message }}</p>
+{% endif %}
+
+<form action="" method="post" {{ form_enctype(form) }}>
+            {{ form_widget(form.dateProd, { 'attr': {'class':'input-small date'} }) }}
+
+    {{ form_widget(form) }}
+    <input type="submit" />
+</form>
+{% endblock %}

@@ -1,0 +1,5 @@
+client: Acteur
+rights: All rights reserved
+client.nom: Last Name
+client.prenom: First Name
+client.telephone: Phone num.

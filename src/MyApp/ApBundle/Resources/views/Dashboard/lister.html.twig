@@ -1,0 +1,12 @@
+{% extends 'MyAppApBundle::layout.html.twig' %}
+{% block title %}Tableau de bord:{% endblock %}
+{% block content %}
+<b>Pour l'année:</b>
+
+{% render "MyAppApBundle:Dashboard:nbContrat" %}
+{% render "MyAppApBundle:Dashboard:nbClient" %}
+{% render "MyAppApBundle:Dashboard:nbEstimation" %}
+{% render "MyAppApBundle:Dashboard:produitUtilisateur" %}
+{% render "MyAppApBundle:Dashboard:produitUtilisateurSemaine" %}
+{% endblock %}
+

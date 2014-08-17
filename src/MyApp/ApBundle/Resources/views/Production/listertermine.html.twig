@@ -1,0 +1,7 @@
+{% extends 'MyAppApBundle::layout.html.twig' %}
+{% block title %}Production{% endblock %}
+{% block content %}
+    
+{% include 'MyAppApBundle:Production:listetermine.html.twig' with {'pagination' : pagination}  %}
+
+{% endblock %}

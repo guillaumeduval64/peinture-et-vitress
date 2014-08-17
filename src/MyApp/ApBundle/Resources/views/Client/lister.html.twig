@@ -1,0 +1,43 @@
+{% extends 'MyAppApBundle::layout.html.twig' %}
+{% block title %}Liste des clients{% endblock %}
+                    {% block recherche %}
+
+<form id="form_recherche" data-provide="typeahead" action="{{ path('myapp_client_rechercher') }}" method="post" >
+                            {{ form_widget(formRecherche.motcle, { 'attr': {'tabindex': '1','autocomplete':'off', 'class': 'form_recherche search-query' } }) }}
+
+                <input type="image" src="{{ asset('bundles/myappap/images/search.png') }}" alt="Search" />
+                </form>
+
+
+{% endblock %}
+{% block page %} 
+
+                       <span data-view="cbp-vm-view-grid">{{ knp_pagination_render(pagination) }}</span>
+{% endblock %}
+{% block content %} 
+<div class="loading"></div>
+<div id="resultatsRecherche"> 
+    {% include 'MyAppApBundle:Client:liste.html.twig' %}
+</div>
+
+<script>
+        $(".loading").hide();
+        $("#form_recherche").submit(function(){ 
+            $(".loading").show();
+            var motcle = $("#clientrecherche_motcle").val();
+            var DATA = 'motcle=' + motcle;
+            $.ajax({
+                type: "POST",
+                url: "{{ path('myapp_client_rechercher')}}",
+                data: DATA,
+                cache: false,
+                success: function(data){
+                   $('#resultatsRecherche').html(data);
+                   $(".loading").hide();
+                }
+            });    
+            return false;
+        });
+        
+</script>
+{% endblock %}

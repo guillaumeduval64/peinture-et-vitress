@@ -1,0 +1,98 @@
+{% extends 'MyAppApBundle::layout.html.twig' %}
+
+{% block title %}{{ contrat.contratEstimation }}: {{ contrat.numero|capitalize }}{% endblock %}
+{% block recherche %}
+{{ contrat.client.nom|upper }} {{ contrat.client.prenom|capitalize }}
+{% endblock %}
+{% block page %}
+<a href="{{ path('myapp_production_modifier', { 'id': contrat.production.id }) }}">Modifier production</a>
+    <a href="{{ path('myapp_clientContrat_voir', { 'id': contrat.id }) }}"><image src="{{ asset('bundles/myappap/images/barcode.png') }}" style="padding-left:50px;"/></a>
+{% endblock %}
+{% block content %}
+{% if message %}
+<img src="{{ asset('bundles/myappap/images/check.png') }}"/>
+{% endif %}
+
+<div id="fiche">
+<table>
+<tr><td>Créé le: {{ contrat.created|date('d/m/y') }}</td></tr>
+
+<tr><td><br></td></tr>
+<tr><td><b>Services:</b></td></tr>
+
+        {% for s in contrat.clientService %}
+    <tr>
+        
+        <td>- {{ s.service.type }}</td>
+        <td>{{ s.prix|number_format(2, ',', '.') }}$</td>
+        <td>{{ s.created|date('d/m/y') }}</td>
+        <td>{{ s.note }}</td>
+        <td>{{ s.id }}</td>
+        <td><a href="{{ path('myapp_contrat_supprimerService', { 'idd': s.id, 'id': contrat.id }) }}"><img src="{{ asset('bundles/myappap/images/cross.png') }}" title="Supprimer service"/></a></td>
+    </tr>    
+{% else %}
+    <tr>
+	<td>Aucun Services trouvés</td>
+    </tr>
+{% endfor %}
+    
+    </tr>    
+<tr><td><b>Paiements:</b></td></tr>
+{% for c in contrat.production.comptabilite %}
+    <tr>
+        <td>créé le: {{ c.created|date('d/m/y') }}</td>
+        <td> {{ c.type.type }}</td>
+        <td> {{ c.paiement }}</td>
+        <td>{{ c.montant|number_format(2, ',', '.') }}$</td>
+        <td> {{ c.note|capitalize}}</td>
+        <td><a href="{{ path('myapp_comptabilite_voir', { 'id': c.id }) }}">voir</a></td>
+
+    </tr>    
+{% else %}
+    <tr>
+	<td>Aucun Bill trouvés</td>
+    </tr>
+{% endfor %}
+
+    
+    </tr>        
+</table> 
+--------------------------------------
+
+<h3>Etat du contrat:</h3>
+<form action="" method="post" {{ form_enctype(form) }} class="form-horizontal">  
+    <table>
+        <tr>    
+            <td>
+            {{ form_widget(form.date, { 'attr': {'placeholder': 'Date', 'class':'input-small date'} }) }}            
+            </td>
+        </tr>
+        <tr>    
+            <td>
+            {{ form_widget(form.contratEstimation, { 'attr': {'placeholder': 'Date', 'class':'input-medium'} }) }}
+            </td>
+        </tr>
+        <tr>    
+            <td>
+            <div class="input-prepend">
+                <span class="add-on">$</span>
+                {{ form_widget(form.depot, { 'attr': {'placeholder': 'Montant du dépôt', 'class':'input-medium dollars'} }) }}
+            </div>
+            </td>
+        </tr>
+        <tr>    
+            <td>
+            {{ form_widget(form.dateDepot, { 'attr': {'placeholder': 'Date du dépôt', 'class':'input-small date'} }) }}
+            </td>
+        </tr>
+        <tr>    
+            <td>
+            <button type="submit" class="btn">Envoyer</button>
+            </td>
+        </tr>
+    </table>
+</form>
+
+</div>
+                                              
+{% endblock %}

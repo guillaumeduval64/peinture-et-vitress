@@ -1,0 +1,131 @@
+html, body, form, fieldset {
+    margin: 0;
+    padding: 0;
+}
+
+ol, ul {
+    margin: 0;
+}
+
+body {
+    color: #000;
+    font: normal 90% Tahoma, Verdana, Helvetica, Sans-Serif;
+    border-style:solid;
+    width:980px;
+    margin: 0 auto;
+}
+
+a, b{
+    color: #08C;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#header {
+    margin-top: 5px;
+}
+
+#contrat {
+    margin-top: 10px;
+    padding-left: 420px;
+    font-size: 120%;
+    border-bottom: 1px solid gray;
+}
+
+#logo img{    
+    margin-top: 20px;
+    width: 50px;
+    height: 50px;
+}
+
+#service { 
+    clear: both;
+    margin-top: 300px;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+#client table {    
+    float: right;
+    text-align:justify;
+    width: 440px;
+    margin-top: 20px;
+    padding-top: 10px;
+    padding-left: 30px;
+    padding-right: 10px;
+    border-left: 1px solid gray;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    padding-bottom: 30px;
+}
+
+#travailleurAutonome table {    
+    float: left;
+    width: 440px;
+    margin-top: 20px;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    border-right: 1px solid gray;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    padding-bottom: 30px;
+}
+
+#note {
+    clear: both;
+    padding-left: 30px;
+}
+
+#date {
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+    border-top: 1px solid gray;
+}
+
+#signature {
+    padding-top: 10px;
+    padding-left: 30px;
+    border-top: 1px solid gray;
+}
+
+#clauses {
+    clear: both;
+    padding-left: 10px;
+    border-top: 1px solid #CCC;
+    font-size: 85%;
+}
+
+#service {
+    clear: both;
+    margin-left: 30px;
+    border-top: 1px solid #CCC;
+}
+
+#footer {
+    clear: both;
+    border-top: 1px solid #CCC;
+    text-align: center;
+    color: #999;
+    font-size: 85%;
+}
+
+table, td, th, p {
+    font-size: 100%;
+}
+
+td, th {
+    padding:3px 5px;
+}
+
+h1 {
+    font-size: 150%;
+}
+

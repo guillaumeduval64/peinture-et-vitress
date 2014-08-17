@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}Intranet{% endblock %}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" href="{{ asset('bundles/myappap/css/satisfaction.css') }}" type="text/css" media="all" />
+ 
+    </head>
+    <body>
+                     <div id="logoSatisfaction">
+ <img src="{{ asset('bundles/myappap/images/logo.png') }}" title="Client"/>
+            </div>
+                <div id="satisfaction">
+                <form action="" method="post" {{ form_enctype(form) }}>
+                    <div class="error">
+                        {{ form_errors(form) }}
+                    </div>
+                <table>
+                    <tr>
+                        <td>{{ form_label(form.difficulte) }}</td>
+                    </tr>
+                    <tr>
+                        <td>    
+                        {{ form_errors(form.difficulte) }}
+                        {{ form_widget(form.difficulte) }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>{{ form_label(form.sympathie) }}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                        {{ form_errors(form.sympathie) }}
+                        {{ form_widget(form.sympathie) }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>{{ form_label(form.particularite) }}</td>
+                    </tr>
+                    <tr>
+                        <td>    
+                        {{ form_errors(form.particularite) }}
+                        {{ form_widget(form.particularite) }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>{{ form_label(form.notes) }}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                        {{ form_errors(form.notes) }}
+                        {{ form_widget(form.notes) }}
+                        </td>
+                    </tr>
+                </table>
+                        {{ form_rest(form) }}
+                <br>
+                <input type="image" src="{{ asset('bundles/myappap/images/add.png') }}" title="Envoyer"/>    
+                </form>               
+                </div>
+    </body>
+</html>
+
+

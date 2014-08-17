@@ -1,0 +1,131 @@
+{% extends 'MyAppApBundle::layout.html.twig' %}
+
+{% block title %}Modifier client: {{ client.nom }} {% endblock %}
+
+{% block content %}
+<p><a href="{{ path('myapp_client_lister') }}"><img src="{{ asset('bundles/myappap/images/previous.png') }}"/><img src="{{ asset('bundles/myappap/images/user.png') }}"/></a></p>
+
+{% if message %}
+<p><img src="{{ asset('bundles/myappap/images/check.png') }}"/></p>
+{% endif %}
+
+ <form action="" method="POST" class="form-horizontal">
+    <table>
+        <tr>
+            <td>{{ form_errors(form) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_widget(form.titles) }}</td>
+            <td>{{ form_widget(form.etat, { 'attr': {'class':'input-medium'} }) }}</td>
+             <td>{{ form_widget(form.ancien, { 'attr': {'class':'input-small'} }) }}</td>
+             <td>{{ form_widget(form.service, { 'attr': {'class':'input-small'} }) }}</td>
+
+        </tr>
+            <tr>
+            <td>{{ form_widget(form.heure, { 'attr': {'class':'input-small'} }) }}</td>
+            <td>{{ form_errors(form.heure, { 'attr': {'class':'input-small'} }) }}</td>
+        </tr>
+   </table>
+   <br>     
+   <table>
+        <tr>
+            <td>{{ form_widget(form.nom, { 'attr': {'placeholder': 'nom', 'class':'input-small'} }) }}</td>
+            <td>{{ form_widget(form.prenom, { 'attr': {'placeholder': 'prenom', 'class':'input-small'} }) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_widget(form.phoneNumber, { 'attr': {'placeholder': 'Tél','autocomplete':'off', 'class':'input-small phone'} }) }}</td>
+            <td>{{ form_widget(form.phoneNumberCell, { 'attr': {'placeholder': 'Cell','autocomplete':'off', 'class':'input-small phone'} }) }}</td>
+            <td>{{ form_widget(form.email, { 'attr': {'placeholder': 'Email', 'class':'input-medium'} }) }}</td>
+        </tr>
+    </table>
+   <br>
+   <table>
+        <tr>
+            <td>{{ form_widget(form.number, { 'attr': {'placeholder': 'num', 'class':'input-mini'} }) }}</td>
+            <td>{{ form_widget(form.street, { 'attr': {'placeholder': 'rue', 'class':'input-medium'} }) }}</td>
+               <td>
+            {{ form_widget(form.city, { 'attr': {'class':'input-medium'} }) }}
+            </td>
+            <td>
+            {{ form_widget(form.pc, { 'attr': {'placeholder': 'CP', 'class':'input-small'} }) }}
+            </td>
+            </tr>
+               </table>
+   <table>
+                        <tr>
+            <td>{{ form_widget(form.date, { 'attr': {'placeholder': 'Date', 'class':'input-small date'} }) }}</td>
+            <td><input type="image" src="{{ asset('bundles/myappap/images/add.png') }}" title="Ajouter"/></td>
+            </tr>
+   </table>
+   
+    {{ form_rest(form) }}
+        <br>
+</form>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // On récupère la balise <div> en question qui contient l'attribut « data-prototype » qui nous intéresse.
+  var $container = $('div#header');
+ 
+  // On ajoute un lien pour ajouter une nouvelle catégorie
+  var $lienAjout = $('<a href="#" id="ajout_phone" class="btn">Ajouter une catégorie</a>');
+  $container.append($lienAjout);
+ 
+  // On ajoute un nouveau champ à chaque clic sur le lien d'ajout.
+  $lienAjout.click(function(e) {
+    ajouterPhone($container);
+    e.preventDefault(); // évite qu'un # apparaisse dans l'URL
+    return false;
+  });
+ 
+  // On définit un compteur unique pour nommer les champs qu'on va ajouter dynamiquement
+  var index = $container.find(':input').length;
+ 
+  // On ajoute un premier champ directement s'il n'en existe pas déjà un (cas d'un nouvel article par exemple).
+  if (index == 0) {
+    ajouterPhone($container);
+  } else {
+    // Pour chaque catégorie déjà existante, on ajoute un lien de suppression
+    $container.children('div').each(function() {
+      ajouterLienSuppression($(this));
+    });
+  }
+ 
+  // La fonction qui ajoute un formulaire Categorie
+  function ajouterPhone($container) {
+    // Dans le contenu de l'attribut « data-prototype », on remplace :
+    // - le texte "__name__label__" qu'il contient par le label du champ
+    // - le texte "__name__" qu'il contient par le numéro du champ
+    var $prototype = $($container.attr('data-prototype').replace(/__name__label__/g, 'Catégorie n°' + (index+1))
+                                                        .replace(/__name__/g, index));
+ 
+    // On ajoute au prototype un lien pour pouvoir supprimer la catégorie
+    ajouterLienSuppression($prototype);
+ 
+    // On ajoute le prototype modifié à la fin de la balise <div>
+    $container.append($prototype);
+ 
+    // Enfin, on incrémente le compteur pour que le prochain ajout se fasse avec un autre numéro
+    index++;
+  }
+ 
+  // La fonction qui ajoute un lien de suppression d'une catégorie
+  function ajouterLienSuppression($prototype) {
+    // Création du lien
+    $lienSuppression = $('<a href="#" class="btn btn-danger">Supprimer</a>');
+ 
+    // Ajout du lien
+    $prototype.append($lienSuppression);
+ 
+    // Ajout du listener sur le clic du lien
+    $lienSuppression.click(function(e) {
+      $prototype.remove();
+      e.preventDefault(); // évite qu'un # apparaisse dans l'URL
+      return false;
+    });
+  }
+});
+</script>
+
+
+{% endblock %}

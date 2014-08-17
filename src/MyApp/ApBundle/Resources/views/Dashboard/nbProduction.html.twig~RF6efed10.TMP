@@ -1,0 +1,17 @@
+<table  id="" class="hovered">
+            <tr>
+                <td class="no_bottom_border" rowspan="3">
+                   <h1>P</h1>
+    </td>
+		<td class="currentMatch" data-nbProductionObj={% if nbProductionObj is defined %}{{ nbProductionObj }}{% endif%}><h6>{{ nbProductionWeek[0][1] }}</h6></td>
+		<td><h6>{{ nbProductionObj }}</h6></td>
+	</tr>
+	<tr>
+		<td><h6>{{ nbProductionMonth[0][1] }}</h6></td>
+		<td><h6>{{ nbProductionObjM }}<h6></td>
+	</tr>
+	<tr>
+		<td><h6>{{ nbProduction[0][1] }}</h6></td>
+		<td><h6>{{ percentageObjectifProd }}</h6></td>
+	</tr>
+</table>

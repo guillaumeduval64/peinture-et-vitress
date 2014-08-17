@@ -1,0 +1,24 @@
+front_end_super:
+    resource: "@FrontEndSuperBundle/Resources/config/routing.yml"
+    prefix:   /
+
+MyAppUtilisateurBundle:
+    resource: "@MyAppUtilisateurBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+MyAppApBundle:
+    resource: "@MyAppApBundle/Resources/config/routing.yml"
+    prefix:   /{_locale}/intranet
+    requirements:
+        _locale: en|fr
+
+# Internal routing configuration to handle ESI
+#_internal:
+#   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
+#   prefix:   /_internal
+
+fos_user_group:
+    resource: "@FOSUserBundle/Resources/config/routing/group.xml"
+    prefix: /group
+

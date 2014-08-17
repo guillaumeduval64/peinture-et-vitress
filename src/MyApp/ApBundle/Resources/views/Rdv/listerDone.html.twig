@@ -1,0 +1,12 @@
+{% extends 'MyAppApBundle::layout.html.twig' %}
+{% block title %}Rendez-vous:{% endblock %}
+{% block recherche %}
+{% include 'MyAppApBundle:Rdv:menu.html.twig' with {'menu': '4: Done'} %}
+{% endblock %}
+{% block page %}
+<div class="navigation">
+    {{ knp_pagination_render(pagination) }}</div>
+{% endblock %}
+{% block content %} 
+    {% include 'MyAppApBundle:Rdv:listeDone.html.twig' with {'pagination' : pagination}  %}
+{% endblock %}

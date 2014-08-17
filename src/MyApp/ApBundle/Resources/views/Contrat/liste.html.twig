@@ -1,0 +1,34 @@
+{% block content %}
+<div class="tabbable tabs-left">
+  <ul class="nav nav-tabs">
+        <li><a href="{{ path('myapp_contrat_listerAnnule') }}">Annulé</a></li>
+        <li><a href="{{ path('myapp_contrat_listerEstimation') }}">Estimation</a></li>
+        <li class="active"><a href="{{ path('myapp_contrat_lister') }}">Contrat</a></li>
+  </ul>
+  <div class="tab-content">
+    <table>
+<tr>
+{# sorting of properties based on query components #}
+    <th>{{ knp_pagination_sortable(pagination, 'N.', 'c.numero')|raw }}</th>
+    <th>{{ knp_pagination_sortable(pagination, 'Date créé', 'c.created')|raw }}</th>
+    <th>Prénom Nom</th>
+    <th>Note au contrat</th>
+</tr>
+
+{# table body #}
+{% for c in pagination %}
+<tr {% if loop.index is odd %}class="color"{% endif %}>
+    <td><a href="{{ path('myapp_contrat_voir', { 'id': c.id }) }}">{{ c.numero }}</a></td>
+    <td>{{ c.created|date('d/m/y') }}</td>    
+    <td>{{ c.production.client.prenom|capitalize }} {{ c.production.client.nom|upper }}</td>
+    <td>{{ c.production.note }}</td>
+</tr>
+
+{% endfor %}
+</table>
+{# display navigation #}
+  <div class="navigation">
+    {{ knp_pagination_render(pagination) }}</div>
+  </div>  
+</div>
+{% endblock %}

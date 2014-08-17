@@ -1,0 +1,24 @@
+<table>
+<tr>
+{# sorting of properties based on query components #}
+    <th>{{ knp_pagination_sortable(pagination, 'Date', 'a.date')|raw }}</th>
+    <th>{{ knp_pagination_sortable(pagination, 'Nom', 'a.nom')|raw }}</th>
+    <th>{{ knp_pagination_sortable(pagination, 'Prénom', 'a.prenom')|raw }}</th>
+    <th>{{ knp_pagination_sortable(pagination, 'Téléphone', 'a.phoneNumber')|raw }}</th>
+    <th>Service</th>
+    <th>Ville</th>
+</tr>
+
+{# table body #}
+{% for client in pagination %}
+<tr {% if loop.index is odd %}class="color"{% endif %}>
+    <td>{{ client.date|date('d/m/y') }}</td>
+    <td><a href="{{ path('myapp_estimation_voirClient', { 'id': client.id }) }}">{{ client.nom }}</a></td>
+    <td>{{ client.prenom }}</td>
+    <td>{{ client.phoneNumber }}</td>
+    <td>{{ client.service.type|capitalize }}</td>
+    <td>{{ client.city.city }}</td>
+    <td><a href="{{ path('myapp_client_modifier', { 'id': client.id }) }}"><img src="{{ asset('bundles/myappap/images/pencil.png') }}"  title="Modifier"/></a></td>
+</tr>
+{% endfor %}
+</table>

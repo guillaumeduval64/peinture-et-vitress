@@ -1,0 +1,11 @@
+<div id="connexion">
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+   <span><a href="{{ path('fos_user_profile_show') }}"> <h5 class="fg-color-white">{{ app.user.username|capitalize }}</h5></a></span><span><h5 class="fg-color-white"> | </h5></span>
+    <span><a href="{{ path('fos_user_security_logout') }}">
+         <h5 class="fg-color-white">{{ 'layout.logout'|trans([], 'FOSUserBundle') }}</h5>
+    </a></h5></span>
+{% else %}
+    <span><a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans([], 'FOSUserBundle') }}</a> |
+    <a href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans([], 'FOSUserBundle') }}</a></span>
+{% endif %}
+</div>

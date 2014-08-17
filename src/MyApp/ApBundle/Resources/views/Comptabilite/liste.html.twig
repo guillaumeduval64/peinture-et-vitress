@@ -1,0 +1,99 @@
+<div class="billRight"> 
+    <table>
+        <tr>
+{# sorting of properties based on query components #}
+            <th>{{ knp_pagination_sortable(pagination, 'Date', 'c.created')|raw }}</th>
+            <th>Type</th>
+            <th>{{ knp_pagination_sortable(pagination, 'Montant', 'c.montant')|raw }}</th>
+        </tr>
+        {% for c in pagination %}
+        <tr {% if loop.index is odd %}class="color"{% endif %}>
+            <td>{{ c.created|date('d/m') }}</td>
+            <td>{{ c.type.type }}</td>
+            <td>{{ c.montant|number_format(2, ',', '.') }}$</td>
+            <td><a href="{{ path('myapp_comptabilite_voir', { 'id': c.id }) }}">voir</a></td>
+            {#<td><a href="{{ path('myapp_contrat_voir', { 'id': c.production.contrat.id }) }}">{{ c.production.contrat.id }}</a></td></td>  #}
+        </tr>
+        {% else %}
+
+        <tr>
+            <td>Aucun bill n'a été trouvé.</td>
+        </tr>
+        {% endfor %}
+    </table>
+        
+    {# display navigation #}
+    <div class="navigation">
+        {{ knp_pagination_render(pagination)|raw }}
+    </div>
+</div>
+
+<!-- Modal Comptabilite -->
+    <h3 id="">Ajout d'une facture:</h3>
+     
+    <div class="" style="float:left;">
+        <form action="{{ path('myapp_comptabilite_ajouter') }}" method="post" {{ form_enctype(form) }}>
+    <table>           
+        <tr>
+            <td>
+{% if message %}
+                    <p><img src="{{ asset('bundles/myappap/images/check.png') }}"/></p>
+{% endif %}
+                    </td>
+                </tr>
+
+                    <div class="error">
+            {{ form_errors(form) }}
+                        </div>
+
+                        <tr>
+                            <td>
+            {{ form_errors(form.paiement) }}
+            {{ form_widget(form.paiement) }}
+
+                                </td>
+                            </tr>
+                             <tr>
+                            <td>
+            {{ form_widget(form.date, { 'attr': {'placeholder': 'Date d', 'class':'input-medium date'} }) }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                    {{ form_label(form.type) }}
+            {{ form_errors(form.type) }}
+            {{ form_widget(form.type) }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+            {{ form_label(form.montant) }}
+            {{ form_errors(form.montant) }}
+            {{ form_widget(form.montant) }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+            {{ form_errors(form.bilan) }}
+            {{ form_widget(form.bilan) }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+
+            {{ form_errors(form.note) }}
+            {{ form_widget(form.note) }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+      {{ form_rest(form) }}  
+                                                    <input type="image" src="{{ asset('bundles/myappap/images/add.png') }}" />
+                                                </td>
+                                            </tr>
+                                    </table>
+
+                                </form>
+
+    </div>
+</div>

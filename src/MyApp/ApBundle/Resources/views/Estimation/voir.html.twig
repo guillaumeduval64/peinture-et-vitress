@@ -1,0 +1,263 @@
+{% extends 'MyAppApBundle::layout.html.twig' %}
+{% block title %}
+    Fiche client:
+{% endblock %}
+{% block previous %}
+<a href="{{ path('myapp_estimation_suivant', { 'id': client.id, 'client': client, 'param':'Prev' }) }}"> Précèdent</a>
+{% endblock %}
+{% block next %}
+<a href="{{ path('myapp_estimation_suivant', { 'id': client.id, 'client': client, 'param':'Next' }) }}"> Suivant</a>
+{% endblock %}
+{% block recherche %}
+ <span style="float:left;">
+                        <a href="{{ path('myapp_estimation_suivant', { 'id': client.id, 'client': client, 'etat': client.etat, 'param':'Prev' }) }}" class="icon-arrow-left-2"></a>
+                        <span>État: {{ client.etat }}</span>
+                        <a href="{{ path('myapp_estimation_suivant', { 'id': client.id, 'etat': client.etat, 'param':'Next' }) }}" class="icon-arrow-right-2"></a></span>
+                        <span style="float:right;">
+                           <span style="font-size:10px;">  Service demandés: {{ client.service.type|capitalize }}     <br>    </span>              
+   <span style="font-size:10px;"> Créé par: {{ client.user|capitalize }} le {{ client.dateTable.date|date('d M y') }}</span>
+                        </span>
+{% endblock %}
+
+
+
+{% block principalNote %}  
+
+
+
+
+
+
+
+
+
+
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+
+        <div class="col-md-offset-0 col-md-0 col-lg-offset-0 col-lg-6">
+         <div class="">
+            <div class="col-sm-12" id="main">
+                <div class="col-xs-12 col-sm-8">
+                    <h2>{{ client.nom|upper }} {{ client.prenom|capitalize }}</h2>
+    
+                    <p><strong>Adresse: </strong> {{ client.number }} {{ client.street }} </p><br>
+                    <p>{{ client.city.city|capitalize }}, {{ client.pc|upper }}</p>
+                    <p><strong>Mail: </strong><a href="mailto:{{ client.email }}">{{ client.email }}</a> </p>
+                    <p><strong>Téléphone: </strong>
+                    {% for p in client.phones %}
+    {{ p.phoneType.phoneType|capitalize }}: {{ p.phone }}
+    <br>
+{% else %}
+        Aucun Téléphone.
+{% endfor %}
+                        
+                    </p>
+                    <p><strong>Services done: </strong>
+                        <span class="tags">html5</span> 
+                        <span class="tags">css3</span>
+                        <span class="tags">jquery</span>
+                        <span class="tags">bootstrap3</span>
+                    </p>
+                </div>             
+                <div class="col-xs-12 col-sm-4 text-center">
+                </div>
+            </div>            
+            <div class="col-xs-12 divider text-center" id="sidebar">
+                <div class="col-xs-12 col-sm-4 emphasis">
+                    <h2><strong> 20,7K </strong></h2>                    
+                    <p><small>Followers</small></p>
+                    <button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Follow </button>
+                </div>
+                <div class="col-xs-12 col-sm-4 emphasis">
+                    <h2><strong>245</strong></h2>                    
+                    <p><small>Following</small></p>
+                    <a class="btn btn-info btn-block" href="{{ path('myapp_client_modifier', { 'id': client.id }) }}"> <span class="fa fa-user"></span>Modifier Profil</a>
+                </div>
+                <div class="col-xs-12 col-sm-4 emphasis">
+                    <h2><strong>43</strong></h2>                    
+                    <p><small>Snippets</small></p>
+                    <div class="btn-group dropup btn-block">
+                      <button type="button" class="btn btn-primary"><span class="fa fa-gear"></span> Options </button>
+                      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                      </button>
+                      <ul class="dropdown-menu text-left" role="menu">
+                        <li><a href="#"><span class="fa fa-envelope pull-right"></span> Send an email </a></li>
+                        <li><a href="#"><span class="fa fa-list pull-right"></span> Add or remove from a list  </a></li>
+                        <li class="divider"></li>
+                        <li><a href="#"><span class="fa fa-warning pull-right"></span>Report this user for spam</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#" class="btn disabled" role="button"> Unfollow </a></li>
+                      </ul>
+                    </div>
+                     
+                </div>
+            </div>
+         </div>                 
+        </div>
+
+
+                    <div class="right-map">
+<table id="map">
+            <tr>
+                <td>
+                    {{ google_map_container(map) }}
+                    {{ google_map_js(map) }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    
+                        <figcaption class="ratings">
+                            <p>Ratings
+                            <a href="#">
+                                <span class="fa fa-star"></span>
+                            </a>
+                            <a href="#">
+                                <span class="fa fa-star"></span>
+                            </a>
+                            <a href="#">
+                                <span class="fa fa-star"></span>
+                            </a>
+                            <a href="#">
+                                <span class="fa fa-star"></span>
+                            </a>
+                            <a href="#">
+                                 <span class="fa fa-star-o"></span>
+                            </a> 
+                            </p>
+                        </figcaption>
+                </td>
+            </tr>
+            </table>
+            </div>
+
+
+
+
+
+<div class= "info-client">             
+
+{% endblock %}
+    
+{% block right %}
+<div id="services">
+
+<div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+            Note ({{ notes|length }})
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse">
+      <div class="panel-body">
+    <div id="note">
+
+<form action="{{ path('myapp_estimation_voirClient', {'id' : client.id}) }}" method="post">
+    {{ form_widget(formNote) }}
+    <input type="submit" value="Ajouter" />
+</form>
+<div class="loading"></div>
+<div id="resultats_notes"> 
+    {% include 'MyAppApBundle:Note:liste.html.twig' with {'notes' : notes}  %}
+</div>
+</div> 
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+              <h4>Services<a href="{{ path('myapp_estimation_creerService', { 'id': client.id }, { 'map': map }) }}"> <img src="{{ asset('bundles/myappap/images/add.png') }}" title="Ajouter Service"/></a>({{ clientServices|length }})</h4>
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse">
+      <div class="panel-body">
+    {% if clientServices %}
+
+{% for s in clientServices %}
+        <div class="col-xs-18 col-sm-6 col-md-3">
+          <div class="thumbnail">
+                      <img src="http://placehold.it/500x300" alt="">
+            <div class="caption">
+            <span class="dateSpan"><b>{{ s.created|date('d/m/y') }}</b></span>
+            <p>{{ s.service.type }}</p>
+            <p>{{ s.prix|number_format(2, ',', '.') }}$</p>
+            <p>{{ s.note|capitalize }}</p> 
+            <p><a href="{{ path('myapp_service_supprimerService', { 'idd': s.id,'id': client.id  }) }}" ><img src="{{ asset('bundles/myappap/images/cross.png') }}" title="Supprimer service"/></a></p>
+          
+        {% if s.image.webpath is defined %}
+        <p><span class="icone"><img src="{{ asset(s.image.webPath) }}" alt="{{ s.image.alt }}" class="img-polaroid"  width="100px" height="100px" /></span></p>
+         {% endif %}
+
+{% endfor %}
+{% else %}
+    <p>Aucun Services trouvés</p>
+ {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+        </div>
+
+
+
+
+
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+              <h4> Contrats<a href="{{ path('myapp_contrat_ajouter', { 'id': client.id }) }}"> <img src="{{ asset('bundles/myappap/images/add.png') }}" title="Ajouter Contrat"/></a>({{ clientservicestest|length }})</h4>
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse">
+      <div class="panel-body">
+       {% if clientservicestest %}
+<table id="tbestimation">
+{% for co in clientservicestest %}
+        <tr>
+            <td><span class="dateSpan"><b>{{ co.created|date('d/m/y') }}:</b></span></td>
+            <td>{{ co.numero }}</td>
+            <td>{{ co.service }}</td>
+            <td>{{ co.prix }}$</td>
+
+            <td><a href="{{ path('myapp_contrat_voir', { 'id': co.id }) }}"><img src="{{ asset('bundles/myappap/images/binoculars.png') }}" alt="Stats"/></a></td></td>
+
+            {% if co.date != null %}
+                <td>{{ co.date|date('d M y') }}</td
+            {% else %}
+                <td>N/A</td>
+            {% endif %}
+         </tr>       
+{% else %}
+    <tr>
+        <td>Aucunes contrats trouvées</td>
+    </tr>
+{% endfor %}
+    </table> 
+{% endif %}
+      </div>
+    </div>
+  </div>
+
+        </div>
+        </div>
+</div>
+
+
+
+        {% endblock %}

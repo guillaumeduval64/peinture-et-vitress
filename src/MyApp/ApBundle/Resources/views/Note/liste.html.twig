@@ -1,0 +1,7 @@
+{% for n in notes %}
+    <span class="dateSpan"><b>{{ n.created|date('d/m/y') }}: {{ n.type }}</b></span> {{ n.note|capitalize }}<br>
+{% else %}
+
+        Aucunes notes trouvées
+
+{% endfor %}

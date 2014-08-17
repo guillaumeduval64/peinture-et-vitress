@@ -1,0 +1,14 @@
+
+<table>
+    <br>
+{% for m in messages%}   
+    <tr>
+        <td>{{ m.created|date('d/m') }}: </td>
+        <td><b>{{ m.user }} </b>{{ m.created|date('G:i') }}: </td>
+        <td>{{ m.message|capitalize }}</td>
+    </tr>
+{% else %}
+<p>Aucun messages</p>
+{% endfor %}
+</table>
+<br>

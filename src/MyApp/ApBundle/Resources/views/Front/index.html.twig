@@ -1,0 +1,44 @@
+{% extends 'MyAppApBundle::layout.html.twig' %}
+{% block title %}Dashboard{% endblock %}
+{% block principalNote %}
+{% block statistics %}
+<div id="stat">
+    <div id="tableau_stat">  {% render(controller("MyAppApBundle:Dashboard:nbClient")) %}</div>
+    <div id="tableau_stat">{% render(controller("MyAppApBundle:Dashboard:nbEstimation")) %}</div>
+    <div id="tableau_stat">{% render(controller("MyAppApBundle:Dashboard:nbContrat")) %}</div>
+ {#    <div id="tableau_stat">{% render(controller("MyAppApBundle:Dashboard:nbProduction")) %}</div> #}
+</div>
+
+
+
+<canvas id="buyers" width="600" height="400"></canvas>
+
+<script>
+var buyerData = {
+    labels : ["January","February","March","April","May","June"],
+    datasets : [
+        {
+            fillColor : "rgba(172,194,132,0.4)",
+            strokeColor : "#ACC26D",
+            pointColor : "#fff",
+            pointStrokeColor : "#9DB86D",
+            data : [203,156,99,251,305,247]
+        }
+    ]
+}
+
+
+    var buyers = document.getElementById('buyers').getContext('2d');
+    new Chart(buyers).Line(buyerData);
+</script>
+
+
+
+{% endblock %}
+
+{% block quickAddClient %}
+{% render(controller("MyAppApBundle:Client:ajouter")) %}
+
+
+{% endblock %}
+{% endblock %}

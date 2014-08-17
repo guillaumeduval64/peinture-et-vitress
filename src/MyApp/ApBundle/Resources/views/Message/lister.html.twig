@@ -1,0 +1,9 @@
+{% extends 'MyAppApBundle::layout.html.twig' %}
+
+{% block content %}
+    <h1>Liste des Messages</h1>
+        <a href="{{ path('myapp_message_ajouter') }}">Ajouter un Message</a>
+<br>
+{% include 'MyAppApBundle:Message:liste.html.twig' with {'messages' : messages}  %}
+
+{% endblock %}

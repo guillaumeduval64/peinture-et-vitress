@@ -1,0 +1,29 @@
+        <table class="centrer">
+<tr>
+{# sorting of properties based on query components #}
+    <th><h3>{{ knp_pagination_sortable(pagination, 'Flag', 'c.noticeClient') }}</h3></th>
+    <th>{{ knp_pagination_sortable(pagination, 'Date', 'c.created') }}</th>
+    <th>{{ knp_pagination_sortable(pagination, 'Rappel', 'c.date') }}</th>
+    <th>{{ knp_pagination_sortable(pagination, "client.nom" | trans, 'c.nom') }}</th>
+    <th>Service</th>
+    <th>Total</th>
+    <th>{{ knp_pagination_sortable(pagination, 'Ville', 'a.city') }}</th>
+</tr>
+                        {% for client in pagination %}
+                            <tr {% if loop.index is odd %}class="color"{% endif %}>
+                                <td>{% if client.flag %}<img src="{{ asset('bundles/myappap/images/flamme.png') }}" title="Attention"/>{% endif %}</td>
+                                <td><span class="cbp-vm-title">{{ client.created|date('d/m/y') }}</span></td>
+                                <td>{% if client.date != null %}{{ client.date|date('d/m/y') }}{% endif %}</td>
+                                <td><h3>{{ client.nom|capitalize }} {{ client.prenom|capitalize }}</h3></a></td>
+                                <td>{{ client.service.type|capitalize }}</td>
+                                <td class="cbp-vm-price">$</td>
+                                <td>{{ client.city.city }}</td>
+                                <td><a class="cbp-vm-icon cbp-vm-add" href="{{ path('myapp_estimation_voirClient', { 'id': client.id }) }}">Voir</a></td>
+                                <td><a class="cbp-vm-icon cbp-vm-add" href="{{ path('myapp_client_modifier', { 'id': client.id }) }}">Modifier</a></td>
+                            </tr>
+                        {% endfor %}
+</table>
+
+                </div>
+            </div><!-- /main -->
+        </div><!-- /container -->

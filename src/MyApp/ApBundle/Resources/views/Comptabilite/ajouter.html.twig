@@ -1,0 +1,77 @@
+{% block bill %}
+<table>           
+    <tr>
+        <td>
+             {% block title %}<h1>Ajouter un bill:</h1>{% endblock %}
+            </td>
+        </tr>
+        <tr>
+            <td>
+{% if message %}
+                    <p><img src="{{ asset('bundles/myappap/images/check.png') }}"/></p>
+{% endif %}
+                </td>
+            </tr>
+
+            <form action="" method="post" {{ form_enctype(form) }}>
+                <div class="error">
+            {{ form_errors(form) }}
+                    </div>
+
+                    <tr>
+                        <td>
+            {{ form_errors(form.paiement) }}
+            {{ form_widget(form.paiement) }}
+
+                            </td>
+                        </tr>
+                         <tr>
+                            <td>
+            {{ form_widget(form.date, { 'attr': {'placeholder': 'nom', 'class':'input-small'} }) }}
+                                </td>
+                            </tr>
+                        <tr>
+                            <td>
+                    {{ form_label(form.type) }}
+            {{ form_errors(form.type) }}
+            {{ form_widget(form.type) }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+            {{ form_label(form.montant) }}
+            {{ form_errors(form.montant) }}
+            {{ form_widget(form.montant) }}
+                                    </td>
+                                </tr>
+                               <tr>
+                                <td>
+            {{ form_errors(form.bilan) }}
+            {{ form_widget(form.bilan) }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+
+            {{ form_errors(form.note) }}
+            {{ form_widget(form.note) }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+      {{ form_rest(form) }}  
+                                            <input type="image" src="{{ asset('bundles/myappap/images/add.png') }}" />
+                                        </td>
+                                    </tr>
+                            </table>
+
+                        </form>
+
+                    </td>                
+                </tr>
+
+            </table>
+{% endblock %}
+
+
+

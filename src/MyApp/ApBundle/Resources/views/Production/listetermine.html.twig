@@ -1,0 +1,39 @@
+<div class="tabbable tabs-left">
+  <ul class="nav nav-tabs">
+        <li><a href="{{ path('myapp_production_booke') }}">Non booké</a></li>
+        <li><a href="{{ path('myapp_production_lister') }}">Booké</a></li>
+        <li class="active"><a href="{{ path('myapp_production_termine') }}">Terminé</a></li>
+  </ul>
+<div class="tab-content">
+
+<table>
+<tr>
+{# sorting of properties based on query components #}
+    <th>{{ knp_pagination_sortable(pagination, 'Date produit', 'p.dateProd')|raw }}</th>
+    <th>{{ knp_pagination_sortable(pagination, 'Nom', 'p.client.nom')|raw }}</th>
+    <th>{{ knp_pagination_sortable(pagination, 'Prenom', 'p.client.prenom')|raw }}</th>
+    <th>{{ knp_pagination_sortable(pagination, 'Tél.', 'p.client.phoneNumber')|raw }}</th>
+</tr>
+
+{# table body #}
+{% for p in pagination %}
+<tr {% if loop.index is odd %}class="color"{% endif %}>
+     <td><b>{{ p.dateProd|date('d M') }}:</b></td>
+        <td>{{ p.client.nom|upper }}</td> 
+        <td>{{ p.client.prenom|capitalize }} </td>
+        <td>{{ p.client.phoneNumber }}</td>
+        <td>
+            <a href="{{ path('myapp_production_modifier', { 'id': p.id }) }}"><img src="{{ asset('bundles/myappap/images/pencil.png') }}" alt="Stats"/></a>
+            <a href="{{ path('myapp_production_stat', { 'id': p.id }) }}"><img src="{{ asset('bundles/myappap/images/stats_lines.png') }}" alt="Stats"/></a>
+        </td>
+</tr>
+{% else %}
+<p>Aucune production n'a été trouvée.</p>
+{% endfor %}
+</table>
+{# display navigation #}
+<div class="navigation">
+{{ knp_pagination_render(pagination) }}
+</div>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}{{ contrat.contratEstimation }}{% endblock %}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" href="{{ asset('bundles/myappap/css/contrat.css') }}" type="text/css" media="all" />       
+    </head>
+    <body>
+       <div id="page">
+            <div id="header">
+                    <div id="contrat">
+                        {% block contrat %}
+                        {% endblock %}
+                    </div>
+                    <div id="logo">
+                            {% block logo %}
+                            {% endblock %}
+                    </div>
+
+            </div>
+            <div id="travailleurAutonome">
+                {% block travailleurAutonome %}
+                {% endblock %}
+            </div>
+        
+            <div id="client">
+                {% block client %}
+                {% endblock %}
+            </div> 
+            <div id="service">
+                    {% block service %}
+                    {% endblock %}
+            </div>
+
+            <div id="note">
+                    {% block note %}
+                    {% endblock %}
+            </div>
+            <div id="date">
+                    {% block date %}
+                    {% endblock %}
+            </div>
+            <div id="signature">
+                    {% block signature %}
+                    {% endblock %}
+            </div>
+            <div id="clauses">
+                    {% block clauses %}
+                    {% endblock %}
+            </div>
+            <div id="footer">
+                <p>Tous droits réservés © 2012</p>
+            </div>
+        </div>
+    </body> 
+</html>

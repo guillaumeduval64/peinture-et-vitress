@@ -1,0 +1,15 @@
+{% extends 'MyAppApBundle::layout.html.twig' %}
+{% block title %}{% endblock %}
+
+{% block content %}
+{% if message %}
+<p>{{ message }}</p>
+{% endif %}
+<h6>Ajouter un service à: {{ client.prenom|capitalize }} {{ client.nom|upper }} </h6>
+<form action="" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <input type="image" src="{{ asset('bundles/myappap/images/add.png') }}"/>
+</form>
+
+
+{% endblock %}

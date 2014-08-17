@@ -1,0 +1,15 @@
+{% extends 'MyAppApBundle::layout.html.twig' %}
+{% block title %}<h1>Ajouter un Message: </h1>{% endblock %}
+
+{% block content %}
+{% if messageReply %}
+                    <p><img src="{{ asset('bundles/myappap/images/check.png') }}"/></p>
+{% endif %}
+
+<form action="" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <input type="submit" />
+</form>
+
+
+{% endblock %}

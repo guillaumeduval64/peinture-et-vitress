@@ -1,0 +1,10 @@
+front_end_super_homepage:
+    pattern:  /
+    defaults: { _controller: FrontEndSuperBundle:Default:index }
+
+front_end_super_estimation:
+    pattern:  /estimation
+    defaults: { _controller: FrontEndSuperBundle:Default:estimation }
+    requirements:
+       _method: POST
+

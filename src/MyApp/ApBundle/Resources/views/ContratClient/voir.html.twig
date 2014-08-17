@@ -1,0 +1,153 @@
+{% extends 'MyAppApBundle:ContratClient:voirLayout.html.twig' %}
+
+{% block contrat %}
+{{ contrat.contratEstimation }}: <b>{{ contrat.numero }}</b>
+{% endblock %}
+{% block logo %}
+<img src="{{ asset('bundles/myappap/images/logo.png') }}" title="Ajouter Client"/>
+{% endblock %}
+
+{% block travailleurAutonome %}
+
+<table>
+    <tr><td><b><h2>Travailleur Autonome:</b></h2></td></tr>
+    <tr><td></td></tr>
+    <tr>
+        <td><b>Nom:</b></td> 
+        <td><b>Prenom:</b></td> 
+    </tr>   
+    <tr>
+        <td>DUVAL</td>
+        <td>Guillaume</td>
+    </tr>
+    <tr><td></td></tr>
+    <tr>
+        <td><b>Numero: </b></td>
+        <td><b>Rue: </b></td>
+        <td><b>Ville: </b></td>
+        <td><b>Cp: </b></td>
+    </tr>
+        <td>#2, 100</td>
+        <td>Bd Saint-Joseph ouest</td>
+        <td>Montreal</td>
+        <td>H2T-2P6</td>
+    <tr><td></td></tr>
+</table>
+{% endblock %}
+
+{% block client %}
+<table>
+    <tr><td><b><h2>Client:</h2></b></td></tr>
+    <tr><td></td></tr>
+    <tr>
+        <td><b>Nom:</b></td> 
+        <td><b>Prenom:</b></td> 
+    </tr>   
+    <tr>
+        <td>{{ contrat.production.client.nom|upper }}</td>
+        <td>{{ contrat.production.client.prenom|capitalize }}</td>
+    </tr>
+    <tr><td></td></tr>
+    <tr>
+        <td><b>Numero: </b></td>
+        <td><b>Rue: </b></td>
+        <td><b>Ville: </b></td>
+        <td><b>Cp: </b></td>
+    </tr>
+        <td>{{ contrat.production.client.number}}</td>
+        <td>{{ contrat.production.client.street|capitalize }}</td>
+        <td>{{ contrat.production.client.city.city|capitalize }}</td>
+        <td>{{ contrat.production.client.pc|upper }}</td>
+    <tr><td></td></tr>
+        <tr>
+            {% for s in contrat.production.client.phones %}
+        <td><b>{{ s.phoneType.id }} Téléphone:</b></td>
+        {% endfor %}
+        <td><b>Email: </b></td>
+    </tr>
+    {% for s in contrat.production.client.phones %}
+        <td>{{ s.phone}}</td>
+        {% endfor %}
+        <td>{{ contrat.production.client.email }}</td>
+    <tr><td></td></tr>
+</table>
+{% endblock %}
+
+{% block service %}
+<h1>Détails {{ contrat.contratEstimation|lower }}: </h1>
+<table>
+{% for s in contrat.clientService %}
+<table>
+    <tr>
+        <td>{{ s.service.type }}</td>
+        <td>{{ s.prix|number_format(2, ',', '.') }} $</td></tr> 
+    <tr> 
+        <td>Note:</td>
+        <td>{{ s.note|capitalize }}</td>
+    </tr>    
+</table>
+        <br>
+
+{% else %}
+<table>
+    <tr>
+	<td>Aucun Services trouvés</td>
+    </tr>
+</table>
+{% endfor %}
+<table>
+        <tr> 
+            <td>Total:</td>
+            <td>{{ total['0']['1']|number_format(2, ',', '.') }} $</td>
+        </tr> 
+                <tr> 
+            <td>Dépôt:</td>
+            <td>{{ contrat.depot|number_format(2, ',', '.') }} $</td>
+        </tr> 
+        <tr> 
+            <td></td>
+            </tr>
+                <tr> 
+            <td>Balance:</td>
+            <td>{{ balance|number_format(2, ',', '.') }} $</td>
+        </tr> 
+</table>
+
+{% endblock %}
+
+{% block note %}
+<h3>Détails additionnels:</h3>
+{{ contrat.production.note|capitalize}}
+{% endblock %}
+{% block date %}
+<table>
+    <tr>
+        <td>Date de production: {{ contrat.production.dateProd|date('d/m/y') }}</td> 
+    </tr>
+</table>
+{% endblock %}
+{% block signature %}
+<table>
+    <tr>
+        <td>
+            Date signature: ____ / ____ / ________
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Signature Entrepreneur:
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Signature client:
+        </td>
+    </tr>
+
+</table>
+{% endblock %}
+{% block clauses %}
+<p><b>Termes et Conditions du contrat:</b></p>
+<p>Devis:L'ensemble des détails des travaux à executer est present sur le devis. Aucuns travaux non-inscrits ne seront effectués.</p>
+<p>Défauts non-visibles: Le contrat est effectué aprés une inspection visuelle or advenant des difficultés qui n'auraient pu être décelées lors du devis, une réévaluation sera faite avec le client suite aux défauts apparus.</p>
+{% endblock %}

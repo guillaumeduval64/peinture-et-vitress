@@ -1,0 +1,82 @@
+<div id="ajout_client">
+{% if message %}
+{{ message }}
+{% endif %}
+
+    <h3>Ajout d'un client:</h3>
+  
+    <form action="{{ path('myapp_client_ajouter') }}" method="POST" {{ form_enctype(form) }}>
+
+
+
+<table>
+   
+        <tr>
+            <td>{{ form_errors(form) }}</td>
+        </tr>
+        <tr>
+            <td>
+            {{ form_widget(form.flag) }}
+            </td>
+        </tr>
+        <tr>
+            <td>{{ form_widget(form.titles) }}</td>
+            </tr>
+            <tr>
+            <td>{{ form_widget(form.etat, { 'attr': {'class':'span2'} }) }}</td>
+             <td>{{ form_widget(form.ancien, { 'attr': {'class':'span2'} }) }}</td>
+             <td>{{ form_widget(form.service, { 'attr': {'class':'span2'} }) }}</td>
+
+        </tr>
+            <tr>
+            <td>{{ form_widget(form.heure, { 'attr': {'class':'input-small timepicker'} }) }}</td>
+            <td>{{ form_errors(form.heure, { 'attr': {'class':'input-small'} }) }}</td>
+        </tr>
+
+        <tr>
+            <td>{{ form_widget(form.nom, { 'attr': {'placeholder': 'nom', 'class':'input-small'} }) }}</td>
+            <td>{{ form_widget(form.prenom, { 'attr': {'placeholder': 'prenom', 'class':'input-small'} }) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_widget(form.email, { 'attr': {'placeholder': 'Email', 'class':'input-medium'} }) }}</td>
+        </tr>
+
+        <tr>
+            <td>{{ form_widget(form.number, { 'attr': {'placeholder': 'num', 'class':'span1'} }) }}</td>
+            <td>{{ form_widget(form.street, { 'attr': {'placeholder': 'rue', 'class':'span2'} }) }}</td>
+               <td>
+            {{ form_widget(form.city, { 'attr': {'class':'span2'} }) }}
+            </td>
+            <td>
+            {{ form_widget(form.pc, { 'attr': {'placeholder': 'CP', 'class':'span1'} }) }}
+            </td>
+            </tr>
+                        <tr>
+            <td>{{ form_widget(form.date, { 'attr': {'placeholder': 'Date', 'class':'input-medium date'} }) }}</td>
+            <td></td>
+            </tr>
+   </table>
+    <h3>Phones:</h3>
+    <ul class="phones" data-prototype="{{ form_widget(form.phones.vars.prototype)|e }}">
+        {# iterate over each existing tag and render its only field: name #}
+        {% for phone in form.phones %}
+
+            <li>{{ form_row(phone.phoneType, { 'attr': {'placeholder': 'Phone', 'class':'span2'} }) }}
+            {{ form_row(phone.phone) }}</li>
+            ----------------------------------------------------------
+        {% endfor %}
+    </ul>
+        <br>
+       
+ 
+    <input type="submit" class="btn btn-primary" value="Ajouter" title="Ajouter">
+  </form>
+</div>
+
+{% javascripts
+
+    '@MyAppApBundle/Resources/public/js/phone.js' %}
+    <script src="{{ asset_url }}"></script>
+        
+</script>
+{% endjavascripts %}

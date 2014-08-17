@@ -1,0 +1,31 @@
+{% extends 'MyAppApBundle::layout.html.twig' %}
+{% block title %}Bill: {{ comptabilite.created|date('d/m/Y') }}{% endblock %}
+
+
+{% block content %}
+
+<table>
+ <p> Créé le {{ comptabilite.created|date('d/m/Y') }} par <b>{{ comptabilite.user|capitalize }}</b></p>
+        <br>
+        <p><b>Date: </b>
+        {% if comptabilite.date != NULL %}
+                {{ comptabilite.date|date('d/m/Y') }}</p>
+            {% else %}
+            N/A
+        {% endif %}
+        <p><b>Id Production: </b>
+        {% if comptabilite.production != NULL %}
+               {{ comptabilite.production.id }}</p>
+            {% else %}
+            N/A
+        {% endif %}
+
+
+ </p>      
+        <p><b>Type: </b>{{ comptabilite.type.type }}</p>
+        <p><b>Paiement: </b>{{ comptabilite.paiement|capitalize }}</p>
+        <p><b>Montant: </b>{{ comptabilite.montant|number_format(2, ',', '.') }}$</p>
+       <p><b>Note: </b>{{ comptabilite.note }}</p>
+      <p><a href="{{ path('myapp_comptabilite_supprimer', { 'id': comptabilite.id }) }}"><img src="{{ asset('bundles/myappap/images/cross.png') }}" title="Supprimer bill"/></a></p>
+</table>                 
+{% endblock %}

@@ -1,0 +1,2 @@
+erreur.nom.minlength: Last name should have {{ value }} characters minimum
+site.langue: choose a language

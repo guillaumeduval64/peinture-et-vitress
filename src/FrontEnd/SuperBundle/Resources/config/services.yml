@@ -1,0 +1,4 @@
+services:
+    front_end_super.calculservice:
+        class: FrontEnd\SuperBundle\CalculService\Calcul
+

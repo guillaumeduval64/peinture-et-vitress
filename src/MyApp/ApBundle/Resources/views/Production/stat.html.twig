@@ -1,0 +1,32 @@
+{% extends 'MyAppApBundle::layout.html.twig' %}
+
+{% block title %}Stat: {{ production.client.nom|upper}} {{ production.client.prenom|capitalize }} - {{ production.dateProd|date('d M Y') }}{% endblock %}     
+
+{% block content %}
+<table>
+    <tr><td><a href="{{ path('myapp_estimation_voirClient', { 'id': production.client.id }) }}">Voir fiche client</a></td> </tr>
+    <tr><td>Appel: {% if production.satisfaction.appel %}{{ production.satisfaction.appel|capitalize }}{% endif %}</td></tr>
+    <tr><td>Equipe: {% if production.satisfaction.equipe %}{{ production.satisfaction.equipe|capitalize }}{% endif %}</td></tr>
+    <tr><td>Service: {% if production.satisfaction.service %}{{ production.satisfaction.service|capitalize }}{% endif %}/5</td></tr>
+    <tr><td>Peinture: {% if production.satisfaction.peinture %}{{ production.satisfaction.peinture|capitalize }}{% endif %}</td></tr>
+    <tr><td>Question: {% if production.satisfaction.question %}{{ production.satisfaction.question|capitalize }}{% endif %}</td></tr>
+</table> 
+Retour de l'équipe?
+<table>
+    <tr><td>Appel: {% if production.satisfactionEquipe.difficulte %}{{ production.satisfactionEquipe.difficulte|capitalize }}{% endif %}</td></tr>
+    <tr><td>Equipe: {% if production.satisfactionEquipe.sympathie %}{{ production.satisfactionEquipe.sympathie|capitalize }}{% endif %}</td></tr>
+    <tr><td>Particularités: </td>
+    {% for p in production.satisfactionEquipe.particularite %}
+    
+    <td>- {{ p.particularite|capitalize }}</td>
+    {% else %}
+    <tr><td>Aucunes!</td></tr>
+    {% endfor %}
+    </tr>
+    <tr><td>Peinture: {% if production.satisfactionEquipe.notes %}{{ production.satisfactionEquipe.notes|capitalize }}{% endif %}</td></tr>
+</table>
+
+{% if message %}
+<p>{{ message }}</p>
+{% endif %}
+{% endblock %}
