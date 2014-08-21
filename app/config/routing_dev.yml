@@ -19,4 +19,4 @@ MyAppApBundle_traduction:
 
 console:
     resource: "@CoreSphereConsoleBundle/Resources/config/routing.yml"
-    prefix: /console
+    prefix: /{_locale}/_console

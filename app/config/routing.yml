@@ -1,6 +1,6 @@
 front_end_super:
     resource: "@FrontEndSuperBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /{_locale}
 
 MyAppUtilisateurBundle:
     resource: "@MyAppUtilisateurBundle/Controller/"
@@ -10,6 +10,7 @@ MyAppUtilisateurBundle:
 MyAppApBundle:
     resource: "@MyAppApBundle/Resources/config/routing.yml"
     prefix:   /{_locale}/intranet
+    defaults:   { _locale: en }
     requirements:
         _locale: en|fr
 

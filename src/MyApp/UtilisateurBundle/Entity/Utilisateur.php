@@ -5,6 +5,7 @@ use FOS\UserBundle\Model\GroupableInterface;
 use FOS\UserBundle\Entity\Group as BaseGroup; 
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * @ORM\Entity
  */
@@ -13,7 +14,7 @@ class Utilisateur extends BaseUser
     /**
     * @ORM\Id
     * @ORM\Column(type="integer")
-    * @ORM\generatedValue(strategy="AUTO")
+    * @ORM\GeneratedValue(strategy="AUTO")
     */
     protected $id;
     

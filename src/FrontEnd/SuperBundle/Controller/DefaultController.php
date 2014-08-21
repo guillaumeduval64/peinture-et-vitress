@@ -27,12 +27,10 @@ $prix=0;
     }
 	public function estimationAction()
     {
+$request = $this->container->get('request');
 
-  $request = $this->get('request');
-
-  $form = '';
-        $form = $request->request->get('form');
-var_dump($form)
+$motcle = $request->request->get();
+var_dump($motcle);
    $devis = New Devis();
 
 

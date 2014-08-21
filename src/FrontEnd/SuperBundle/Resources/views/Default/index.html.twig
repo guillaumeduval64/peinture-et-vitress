@@ -194,7 +194,7 @@ Nous vous garantissons le prix et la qualité!
               <div class="col-sm-6">
                 <div class="signup-form">
 
-  <form id="form_estimation" method="post" {{ form_enctype(form) }} action="{{ path('front_end_super_estimation') }}">
+  <form id="estimation" method="post" {{ form_enctype(form) }} action="{{ path('front_end_super_estimation') }}">
   {{ form_start(form) }}
     {{ form_errors(form) }}
       <div class="form-group pull-left">
@@ -580,12 +580,9 @@ function slowAlert() {
 });
 
 
+$("#estimation").submit(function(){ 
+    var motcle = $('#estimation').serialize();
 
-
-
-$("#form_estimation").submit(function(){ 
-    var motcle = $('#form_estimation').serialize();
-    var DATA = 'form=' + motcle;
     $.ajax({
         type: "POST",
         url: "{{ path('front_end_super_estimation')}}",

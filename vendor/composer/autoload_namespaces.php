@@ -21,7 +21,6 @@ return array(
     'Psr\\Log\\' => array($vendorDir . '/psr/log'),
     'Knp\\Component' => array($vendorDir . '/knplabs/knp-components/src'),
     'Knp\\Bundle\\PaginatorBundle' => array($vendorDir . '/knplabs/knp-paginator-bundle'),
-    'Ivory\\JsonBuilder' => array($vendorDir . '/egeloen/json-builder'),
     'Ivory\\GoogleMapBundle' => array($vendorDir . '/egeloen/google-map-bundle'),
     'Ivory\\GoogleMap' => array($vendorDir . '/egeloen/google-map/src'),
     'Incenteev\\ParameterHandler' => array($vendorDir . '/incenteev/composer-parameter-handler'),
