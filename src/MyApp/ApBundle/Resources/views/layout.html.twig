@@ -1,23 +1,29 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="icon" href="{{ asset('bundles/myappap/images/user.png') }}" type="image/png">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" href="{{ asset('bundles/myappap/css/modern.css') }}" type="text/css" media="all" />
-        <link rel="stylesheet" href="{{ asset('bundles/myappap/css/jquery-ui-1.10.1.css') }}" type="text/css" media="all" />
-        <link rel="stylesheet" href="{{ asset('bundles/myappap/css/jquery.ui.timepicker.css') }}" type="text/css" media="all" />
+
+
+
+        {% stylesheets filter='cssrewrite' output='css/back.css'
+            '@MyAppApBundle/Resources/public/css/modern.css'
+            '@MyAppApBundle/Resources/public/css/jquery-ui-1.10.1.css'
+            '@MyAppApBundle/Resources/public/css/jquery.ui.timepicker.css'
+            '@MyAppApBundle/Resources/public/css/menu/normalize.css'
+            '@MyAppApBundle/Resources/public/css/menu/demo.css'
+            '@MyAppApBundle/Resources/public/css/menu/icons.css'
+            '@MyAppApBundle/Resources/public/css/menu/component.css'
+            '@MyAppApBundle/Resources/public/css/menu/componentt.css'
+            '@MyAppApBundle/Resources/public/bootstrap-3.2.0/css/bootstrap.css'
+            '@MyAppApBundle/Resources/public/css/menu/default.css'
+
+
+        %}
+        <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+        {% endstylesheets %}
+
+
+
         <script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
-
-        <link rel="stylesheet" href="{{ asset('bundles/myappap/css/menu/normalize.css') }}" type="text/css" media="all" />
-        <link rel="stylesheet" href="{{ asset('bundles/myappap/css/menu/demo.css') }}" type="text/css" media="all" />
-        <link rel="stylesheet" href="{{ asset('bundles/myappap/css/menu/icons.css') }}" type="text/css" media="all" />
-        <link rel="stylesheet" href="{{ asset('bundles/myappap/css/menu/component.css') }}" type="text/css" media="all" />
-        <link rel="stylesheet" href="{{ asset('bundles/myappap/css/menu/componentt.css') }}" type="text/css" media="all" />
-         <link rel="stylesheet" href="{{ asset('bundles/myappap/bootstrap-3.2.0/css/bootstrap.css') }}" type="text/css" media="all" />
-
-<link rel="stylesheet" href="{{ asset('bundles/myappap/css/menu/default.css') }}" type="text/css" media="all" />
-<link rel="shortcut icon" href="../favicon.ico">
-        
 
 
 {% javascripts

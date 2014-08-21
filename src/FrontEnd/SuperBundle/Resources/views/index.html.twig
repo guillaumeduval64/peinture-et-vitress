@@ -6,6 +6,7 @@
 -->
 <html>
 	<head>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
 
    {% stylesheets filter='cssrewrite' output='css/final.css'
         '@FrontEndSuperBundle/Resources/public/startup/flat-ui/bootstrap/css/bootstrap.css'
@@ -18,14 +19,12 @@
         '@FrontEndSuperBundle/Resources/public/startup/ui-kit/ui-kit-price/css/ui-kit-styles.css'
         '@FrontEndSuperBundle/Resources/public/startup/samples/sample-01/css/style.css'
         '@FrontEndSuperBundle/Resources/public/css/jquery-ui.css'
-        '@FrontEndSuperBundle/Resources/public/css/jquery-ui-smooth.css'
-        '@FrontEndSuperBundle/Resources/public/startup/flat-ui/images/favicon.ico'
         '@FrontEndSuperBundle/Resources/public/startup/ui-kit/ui-kit-price/css/ui-kit-styles.css'
     %}
     <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
     {% endstylesheets %}
 
-
+      
 
 		        {% javascripts
                 '@FrontEndSuperBundle/Resources/public/startup/common-files/js/jquery-1.10.2.min.js'
