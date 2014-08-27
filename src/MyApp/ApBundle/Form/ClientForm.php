@@ -24,10 +24,10 @@ class ClientForm extends AbstractType
                 'choices' => array('0'=>'Nouveau','1'=>'Ancien'),
                 'label' => 'Client depuis? ',))
             ->add('etat', 'choice', array('choices' => array('A recontacter'=>'A recontacter','Rappeler'=>'Rappeler','Rdv'=>'Rdv','Done'=>'Done','2nd service'=>'2nd service','2013'=>'2013','Annulé'=>'Annulé'),'label' => 'Etat: '))
-            ->add('flag')
-            ->add('nom')
+            ->add('flag',null, array('label' => false))
+            ->add('nom', null, array('label' => false))
             ->add('prenom','text',array(
-                'label' => 'client.prenom',
+                'label' => false,
                 'required' =>false,))
             ->add('number','text',array(
                 'label' => 'Numéro: ',
@@ -43,7 +43,7 @@ class ClientForm extends AbstractType
                                                           'allow_add'    => true,
                                                           'allow_delete' => true))
             ->add('email','text',array(
-                    'label' => 'Email: ',
+                    'label' =>  false,
                     'required' => false,
                 ))
             ->add('date','date', array(

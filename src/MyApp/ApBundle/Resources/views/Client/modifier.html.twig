@@ -9,77 +9,184 @@
 <p><img src="{{ asset('bundles/myappap/images/check.png') }}"/></p>
 {% endif %}
 
- <form action="" method="POST" class="form-horizontal">
-    <table id="no_border">
-        <tr>
-            <td>{{ form_errors(form) }}</td>
-        </tr>
-        <tr>
-                       <td>
-            {{ form_widget(form.flag) }}
-            </td>
-            </tr>
-            <tr>
-                <td>{{ form_widget(form.titles) }}</td>
-            </tr>
-            <tr>
-                <td>{{ form_widget(form.etat, { 'attr': {'class':'input-medium'} }) }}</td>
-                 <td>{{ form_widget(form.ancien, { 'attr': {'class':'input-small'} }) }}</td>
-                 <td>{{ form_widget(form.service, { 'attr': {'class':'input-small'} }) }}</td>
 
-        </tr>
-            <tr>
-            <td>{{ form_widget(form.heure, { 'attr': {'class':'input-small'} }) }}</td>
-            <td>{{ form_errors(form.heure, { 'attr': {'class':'input-small'} }) }}</td>
-        </tr>
-   </table>
-   <br>     
-   <table id="no_border">
-        <tr>
-            <td>{{ form_widget(form.nom, { 'attr': {'placeholder': 'nom', 'class':'input-small'} }) }}</td>
-            <td>{{ form_widget(form.prenom, { 'attr': {'placeholder': 'prenom', 'class':'input-small'} }) }}</td>
-        </tr>
-        <tr>
-            <td>{{ form_widget(form.email, { 'attr': {'placeholder': 'Email', 'class':'input-medium'} }) }}</td>
-        </tr>
-    </table>
-   <br>
-   <table id="no_border">
-        <tr>
-            <td>{{ form_widget(form.number, { 'attr': {'placeholder': 'num', 'class':'input-mini'} }) }}</td>
-            <td>{{ form_widget(form.street, { 'attr': {'placeholder': 'rue', 'class':'input-medium'} }) }}</td>
-               <td>
-            {{ form_widget(form.city, { 'attr': {'class':'input-medium'} }) }}
-            </td>
-            <td>
-            {{ form_widget(form.pc, { 'attr': {'placeholder': 'CP', 'class':'input-small'} }) }}
-            </td>
-            </tr>
-               </table>
-   <table id="no_border">
-                        <tr>
-            <td>{{ form_widget(form.date, { 'attr': {'placeholder': 'Date', 'class':'input-small date'} }) }}</td>
-            </tr>
-   </table>
+
+
+
+
+
+
+  <div class="row">
+    <div>
+        <form action="" method="POST" {{ form_enctype(form) }} class="form-horizontal" role="form">
+        <fieldset>
+
+          <!-- Form Name -->
+          <legend>Ajouter un client:</legend>
+{{ form_errors(form) }}
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="textinput">Flag:</label>
+            <div class="col-sm-10">
+            {{ form_row(form.flag) }}
+            </div>
+          </div>
+
+          
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="textinput"></label>
+            <div class="col-sm-10">
+            {{ form_widget(form.titles) }}
+            </div>
+          </div>
+
+
+
+
+          <div class="form-group">
+            <label class="col-sm-4 control-label" for="textinput">Etat:</label>
+            <div class="col-sm-2">
+              {{ form_widget(form.etat) }}
+            </div>
+
+            <label class="col-sm-4 control-label" for="textinput">Ancien:</label>
+            <div class="col-sm-2">
+             {{ form_widget(form.ancien) }}
+            </div>
+             <label class="col-sm-4 control-label" for="textinput">Service:</label>
+            <div class="col-sm-2">
+              {{ form_widget(form.service) }}
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="textinput">State</label>
+            <div class="col-sm-4">
+                {{ form_row(form.nom, { 'attr': {'class':'form-control'} }) }}
+            </div>
+
+            <label class="col-sm-2 control-label" for="textinput">Postcode</label>
+            <div class="col-sm-4">
+            {{ form_row(form.prenom, { 'attr': {'class':'form-control'} }) }}
+             </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="textinput">Email:</label>
+            <div class="col-sm-10">
+            {{ form_row(form.email, { 'attr': {class:'form-control'} }) }}
+            </div>
+          </div>
+
+
+
+
+          <div class="form-group">
+            <label class="col-sm-4 control-label" for="textinput">Numero:</label>
+            <div class="col-sm-2">
+              {{ form_widget(form.number, { 'attr': {class:'form-control'} }) }}
+            </div>
+
+            <label class="col-sm-4 control-label" for="textinput">Rue:</label>
+            <div class="col-sm-2">
+             {{ form_widget(form.street, { 'attr': {class:'form-control'} }) }}
+            </div>
+             <label class="col-sm-4 control-label" for="textinput">Ville:</label>
+            <div class="col-sm-2">
+              {{ form_widget(form.city, { 'attr': {class:'form-control'} }) }}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-4 control-label" for="textinput">Etat:</label>
+            <div class="col-sm-2">
+              {{ form_widget(form.pc, { 'attr': {class:'form-control'} }) }}
+            </div>
+
+            <label class="col-sm-4 control-label" for="textinput">DAte:</label>
+            <div class="col-sm-2">
+              {{ form_widget(form.date, { 'attr': {'class':'input-medium date'} }) }}
+            </div>
+          </div>
+
+{{ form_widget(form.heure, { 'attr': {'class':'input-small timepicker'} }) }}
 
     <h3>Phones:</h3>
     <ul class="phones" data-prototype="{{ form_widget(form.phones.vars.prototype)|e }}">
         {# iterate over each existing tag and render its only field: name #}
-
-          <p>phoneNumber: {{ client.phoneNumber }}</p>
-  <p>phoneNumberCell: {{ client.phoneNumberCell }}</p>
-  
         {% for phone in form.phones %}
+<div class="col-sm-2">
+            <li>
+            
+            </div>
 
-            <li>{{ form_row(phone.phoneType) }}
-            {{ form_row(phone.phone) }}</li>
-            ----------------------------------------------------------
+
+          <div class="form-group">
+            <label class="col-sm-4 control-label" for="textinput">Phone:</label>
+            <div class="col-sm-2">
+              {{ form_row(phone.phoneType, { 'attr': {'placeholder': 'Phone', 'class':'form-control'} }) }}
+            </div>
+
+            <label class="col-sm-4 control-label" for="textinput">Ancien:</label>
+            <div class="col-sm-2">
+              {{ form_row(phone.phone, { 'attr': {class:'form-control'} }) }}</li>
+            </div>
+          </div>
+
+
         {% endfor %}
-    </ul>   
-        <br>
-{{ form_rest(form) }}
-<input type="image" src="{{ asset('bundles/myappap/images/add.png') }}" value="Ajouter" title="Ajouter"/>
-</form>
+    </ul>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <div class="pull-right">
+                <button type="submit" class="btn btn-default">Cancel</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+              </div>
+            </div>
+          </div>
+
+        </fieldset>
+        {{ form_rest(form) }}
+
+      </form>
+    </div><!-- /.col-lg-12 -->
+</div><!-- /.row -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 {% javascripts

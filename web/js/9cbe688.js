@@ -15933,54 +15933,6 @@ $.fn.extend({
 
 
 })(jQuery);
-$(document).ready(function() {
-var test;
-
-var items = document.getElementsByClassName('currentMatch');
-var nbProductionObj = items.getAttribute("data-nbProductionObj"); 
-alert(nbProductionObj);
-
-    for (var i = 0; i < items.length; i++){
-        test = items[i].innerText;
-    var array=[];
-    array.push(test);
-alert(array);
-if (test > 32) {
-	newColor = '#E9E581';
-
-} else {
-    newColor = "black";
-    
-}
-items[i].style.color = newColor;;
-alert(items[i].style.color);
-}
-
-});
-
-
-$(document).ready(function() {
-var test;
-var items = document.getElementsByClassName('currentMatch');
-
-    for (var i = 0; i < items.length; i++){
-        test = items[i].innerText;
-    var array=[];
-    array.push(test);
-alert(array);
-if (test > 32) {
-	newColor = '#E9E581';
-
-} else {
-    newColor = "black";
-    
-}
-items[i].style.color = newColor;;
-alert(items[i].style.color);
-}
-
-});
-
 /**
  * jQuery number plug-in 2.1.3
  * Copyright 2012, Digital Fusion
@@ -22111,3 +22063,51 @@ $(document).ready($(function() {
         $(".timepicker").timepicker();
 
     }));
+
+$(document).ready(function() {
+var test;
+
+var items = document.getElementsByClassName('currentMatch');
+var nbProductionObj = items.getAttribute("data-nbProductionObj"); 
+alert(nbProductionObj);
+
+    for (var i = 0; i < items.length; i++){
+        test = items[i].innerText;
+    var array=[];
+    array.push(test);
+alert(array);
+if (test > 32) {
+	newColor = '#E9E581';
+
+} else {
+    newColor = "black";
+    
+}
+items[i].style.color = newColor;;
+alert(items[i].style.color);
+}
+
+});
+
+
+$(document).ready(function() {
+var test;
+var items = document.getElementsByClassName('currentMatch');
+
+    for (var i = 0; i < items.length; i++){
+        test = items[i].innerText;
+    var array=[];
+    array.push(test);
+alert(array);
+if (test > 32) {
+	newColor = '#E9E581';
+
+} else {
+    newColor = "black";
+    
+}
+items[i].style.color = newColor;;
+alert(items[i].style.color);
+}
+
+});

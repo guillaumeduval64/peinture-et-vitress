@@ -240,8 +240,11 @@ class ClientController extends ContainerAware
      WHERE c.id = :id')->setParameter('id', $id);
         $city = $query->getResult();
         
-          $geocoder = $this->container->get('ivory_google_map.geocoder');
-      $test= $client ->getNumber()." ".$client ->getStreet()." ".$city[0]['city']." ".$client -> getPc();
+$geocoder = new Geocoder();
+      $geocoder->registerProviders(array(
+          new GeocoderProvider(new CurlHttpAdapter()),
+      ));
+            $test= $client ->getNumber()." ".$client ->getStreet()." ".$city[0]['city']." ".$client -> getPc();
       $response = $geocoder->geocode($test);
       
       $map = $this->container->get('ivory_google_map.map');
@@ -281,7 +284,6 @@ class ClientController extends ContainerAware
                 if ($form->isValid()) 
                 {
                             
-
                         $date = new DateTable();
                         $client->setDateTable($date);
                         $date ->setDate(new \DateTime());

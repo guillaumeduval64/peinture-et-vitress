@@ -1,4 +1,4 @@
-<div id="connexion">
+<div id="connexion" style="float: right; padding-top: 7px; padding-right: 3px;">
 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
    <span><a href="{{ path('fos_user_profile_show') }}"> <h5 class="fg-color-white">{{ app.user.username|capitalize }}</h5></a></span><span><h5 class="fg-color-white"> | </h5></span>
     <span><a href="{{ path('fos_user_security_logout') }}">

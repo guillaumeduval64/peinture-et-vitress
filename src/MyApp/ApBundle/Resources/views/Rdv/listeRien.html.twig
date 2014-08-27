@@ -1,6 +1,10 @@
-<table>
+{% block content %}
+
+{% include 'MyAppApBundle:Rdv:menu.html.twig' with {'rien' : 'rien'} %}
+
+  <div class="tab-content">
+    <table>
 <tr>
-{# sorting of properties based on query components #}
     <th>{{ knp_pagination_sortable(pagination, 'Date', 'a.date')|raw }}</th>
     <th>{{ knp_pagination_sortable(pagination, 'Nom', 'a.nom')|raw }}</th>
     <th>{{ knp_pagination_sortable(pagination, 'Prénom', 'a.prenom')|raw }}</th>
@@ -22,3 +26,10 @@
 </tr>
 {% endfor %}
 </table>
+{# display navigation #}
+  <div class="navigation">
+    {{ knp_pagination_render(pagination) }}</div>
+  </div>  
+</div>
+{% endblock %}
+

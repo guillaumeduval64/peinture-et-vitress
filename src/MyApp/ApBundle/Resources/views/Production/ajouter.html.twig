@@ -11,6 +11,8 @@
             {{ form_widget(form.dateProd, { 'attr': {'class':'input-small date'} }) }}
 
     {{ form_widget(form) }}
+    {{ form_rest(form) }}
+
     <input type="submit" />
 </form>
 {% endblock %}

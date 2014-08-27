@@ -215,6 +215,7 @@ class ContratController extends ContainerAware
                 
         $form = $this->container->get('form.factory')->create(new ContratForm($id), $contrat);
         $request = $this->container->get('request');
+
         if ($request->getMethod() == 'POST') 
         {
             $form->bind($request);
@@ -293,11 +294,14 @@ class ContratController extends ContainerAware
     $production = $contrat -> getProduction();
         $form = $this->container->get('form.factory')->create(new ContratEstimationForm($id), $contrat);
         $request = $this->container->get('request');
+
         if ($request->getMethod() == 'POST') 
         {
             $form->bind($request);
+
                     
             if ($form->isValid()) 
+
                 {                 
                  if ($contrat -> getContratEstimation() =="Estimation")
                         { 
@@ -314,12 +318,6 @@ class ContratController extends ContainerAware
                 }
                         
                $contrat= $em->getRepository('MyAppApBundle:Contrat')->find($id);
-	return $this->container->get('templating')->renderResponse('MyAppApBundle:Contrat:voir.html.twig', 
-	array(
-	'contrat' => $contrat,
-        'message' => '',
-        'form' => $form->createView(),
-            ));
          }
 	
 	return $this->container->get('templating')->renderResponse('MyAppApBundle:Contrat:voir.html.twig', 

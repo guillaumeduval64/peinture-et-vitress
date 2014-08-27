@@ -1,17 +1,14 @@
-    <div class="nav-bar">
-        <div class="nav-bar-inner">
+<div class="tabbable tabs-left">
+  <ul class="nav nav-tabs">
+
+      
+
+         <li {% if rien is defined %} class="active" {% endif %}><a href="{{ path('myapp_rdv_listerRien') }}">Rien</a></li>
  
-            <span class="element">{{ menu }}</span>
- 
-            <span class="divider"></span>
- 
-            <ul class="menu">
-                <li><a href="{{ path('myapp_rdv_listerRien') }}">Rien</a></li>
-                <li><a href="{{ path('myapp_rdv_lister') }}">Rappeler</a></li>
-                <li><a href="{{ path('myapp_rdv_listerRdv') }}">RDV</a></li>
-                <li><a href="{{ path('myapp_rdv_listerDone') }}">Done</a></li>
-                <li><a href="{{ path('myapp_rdv_listerSeconde') }}">2nd Service</a></li>
-                <li><a href="{{ path('myapp_rdv_listerAnnee') }}">2013</a></li>
-            </ul>
-        </div>
-    </div>
+              <li {% if rappeler is defined %} class="active" {% endif %}><a href="{{ path('myapp_rdv_lister') }}">Rappeler</a></li>
+                <li {% if rdv is defined %} class="active" {% endif %}><a href="{{ path('myapp_rdv_listerRdv') }}">RDV</a></li>
+                <li {% if done is defined %} class="active" {% endif %}><a href="{{ path('myapp_rdv_listerDone') }}">Done</a></li>
+                <li {% if seconde is defined %} class="active" {% endif %}><a href="{{ path('myapp_rdv_listerSeconde') }}">2nd Service</a></li>
+                <li {% if annee is defined %} class="active" {% endif %}><a href="{{ path('myapp_rdv_listerAnnee') }}">2013</a></li>
+  </ul>
+  </div>

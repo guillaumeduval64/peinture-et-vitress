@@ -7512,7 +7512,7 @@ border: none;
 	width:0%;
 }
 #ajout_client{
-	width:300px;
+	width:500px;
 	clear:both;
 }
 #stat{
@@ -8834,7 +8834,7 @@ a:hover, a:focus {
 	margin: 0 auto;
 	padding: 2em;
 	background: rgba(0,0,0,0.01);
-	text-align: center;
+	text-align: left;
 }
 
 .codrops-header h1 {
@@ -9728,7 +9728,7 @@ html, body {
 
 #prodBlock{
 	width:500px;
-	height: 450px;
+	height: 520px;
 	float: left;
 	padding-left: 50px;
 }
@@ -16172,4 +16172,20 @@ a:hover {
 
 .formulaire tr, td {
 	padding-top: 10px;
+}
+
+.invoice-title h2, .invoice-title h3 {
+    display: inline-block;
+}
+
+.table > tbody > tr > .no-line {
+    border-top: none;
+}
+
+.table > thead > tr > .no-line {
+    border-bottom: none;
+}
+
+.table > tbody > tr > .thick-line {
+    border-top: 2px solid;
 }

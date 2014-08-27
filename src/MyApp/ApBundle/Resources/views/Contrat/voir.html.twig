@@ -85,6 +85,8 @@
             {{ form_widget(form.dateDepot, { 'attr': {'placeholder': 'Date du dépôt', 'class':'input-small date'} }) }}
             </td>
         </tr>
+        {{ form_rest(form) }}
+
         <tr>    
             <td>
             <button type="submit" class="btn">Envoyer</button>

@@ -28,7 +28,7 @@ class ProductionForm extends AbstractType
        
             ->add('dateProd','date', array(
                     'widget' => 'single_text',
-                    'format' => 'dd MMM yyyy',
+                    'format' => 'dd MMM yy',
                     'required' => false,
                     'label' => 'Date prod: '
             ))

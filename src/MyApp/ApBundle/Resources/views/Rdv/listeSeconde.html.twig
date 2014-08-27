@@ -1,4 +1,9 @@
-<table>
+{% block content %}
+
+{% include 'MyAppApBundle:Rdv:menu.html.twig' with {'seconde' : 'seconde'} %}
+
+  <div class="tab-content">
+    <table>
 <tr>
 {# sorting of properties based on query components #}
     <th>{{ knp_pagination_sortable(pagination, 'Date', 'a.date')|raw }}</th>
@@ -21,3 +26,9 @@
 </tr>
 {% endfor %}
 </table>
+{# display navigation #}
+  <div class="navigation">
+    {{ knp_pagination_render(pagination) }}</div>
+  </div>  
+</div>
+{% endblock %}
