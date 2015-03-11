@@ -83,7 +83,6 @@ textarea {
 body {
   margin-left:auto;
 margin-right:auto;
-border-style: solid;
 }
 /* =============================================================================
    Links
@@ -7366,7 +7365,7 @@ License:	CC BY-SA 3.0 -- http://creativecommons.org/licenses/by-sa/3.0/
 }
 .right-map{
 	float: right;
-	width: 400px;
+	width: 350px;
 }
 .client{
 	padding-top: 20px;
@@ -7512,7 +7511,7 @@ border: none;
 	width:0%;
 }
 #ajout_client{
-	width:500px;
+	width:700px;
 	clear:both;
 }
 #stat{

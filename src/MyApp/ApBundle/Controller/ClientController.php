@@ -392,12 +392,12 @@ $text ="c'est de la balle";
         
         $form = $this->container->get('form.factory')->create(new ClientServiceForm(), $clientService);
         $request = $this->container->get('request');
-        if ($request->getMethod() == 'POST') 
+
+         if ($request->getMethod() == 'POST') 
         {
-        $form->bind($request);
-                    
-            if ($form->isValid()) 
-                {       
+
+            $form->bind($request);
+
                     $clientService -> setClient($client);
                     $clientService ->getPrix();
                     $clientService ->getService();
@@ -409,7 +409,7 @@ $text ="c'est de la balle";
                     
            
                 
-                return new RedirectResponse($this->container->get('router')->generate('myapp_estimation_voirClient', array('id' => $id)));}
+                return new RedirectResponse($this->container->get('router')->generate('myapp_estimation_voirClient', array('id' => $id)));
        
         }
         return $this->container->get('templating')->renderResponse(

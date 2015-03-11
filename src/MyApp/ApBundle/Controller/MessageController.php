@@ -75,7 +75,7 @@ class MessageController extends ContainerAware
         $request = $this->container->get('request');
         if ($request->getMethod() == 'POST') 
         {
-            $form->bindRequest($request);
+            $form->bind($request);
                     
             if ($form->isValid()) 
                 {       

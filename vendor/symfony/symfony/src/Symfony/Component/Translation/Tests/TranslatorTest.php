@@ -17,7 +17,6 @@ use Symfony\Component\Translation\Loader\ArrayLoader;
 
 class TranslatorTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * @dataProvider      getInvalidLocalesTests
      * @expectedException \InvalidArgumentException
@@ -102,7 +101,6 @@ class TranslatorTest extends \PHPUnit_Framework_TestCase
         $translator->setFallbackLocales(array('fr_FR', 'fr'));
         $this->assertEquals('bar (fr)', $translator->trans('bar'));
     }
-
 
     /**
      * @dataProvider      getInvalidLocalesTests
@@ -329,7 +327,6 @@ class TranslatorTest extends \PHPUnit_Framework_TestCase
         // no assertion. this method just asserts that no exception is thrown
     }
 
-
     public function getTransFileTests()
     {
         return array(
@@ -358,12 +355,12 @@ class TranslatorTest extends \PHPUnit_Framework_TestCase
         $messages = array(
             'symfony2' => array(
                 'is' => array(
-                    'great' => 'Symfony2 est super!'
-                )
+                    'great' => 'Symfony2 est super!',
+                ),
             ),
             'foo' => array(
                 'bar' => array(
-                    'baz' => 'Foo Bar Baz'
+                    'baz' => 'Foo Bar Baz',
                 ),
                 'baz' => 'Foo Baz',
             ),
@@ -429,6 +426,7 @@ class TranslatorTest extends \PHPUnit_Framework_TestCase
             array('fr_FR'),
             array('fr.FR'),
             array('fr-FR.UTF8'),
+            array('sr@latin'),
         );
     }
 

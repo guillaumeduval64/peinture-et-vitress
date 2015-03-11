@@ -29,10 +29,34 @@ class EstimationController extends ContainerAware
 
   public function voirClientAction($id) 
     { 
-      $em = $this->container->get('doctrine')->getEntityManager();
+      $em = $this->container->get('doctrine')->getManager();
       $client = $em->find('MyAppApBundle:Client', $id);
 
 
+  $sumContratClient = $this->container->get('doctrine')
+                         ->getManager()
+                         ->getRepository('MyAppApBundle:Comptabilite')
+                         ->getSumContratClient($client->getId());
+
+    $sumSigneClient = $this->container->get('doctrine')
+        ->getManager()
+        ->getRepository('MyAppApBundle:ClientService')
+        ->getSumSigneClient($client->getId());
+
+    $countSigneClient = $this->container->get('doctrine')
+        ->getManager()
+        ->getRepository('MyAppApBundle:ClientService')
+        ->getCountSigneClient($client->getId());
+
+    $sumProduitClient = $this->container->get('doctrine')
+        ->getManager()
+        ->getRepository('MyAppApBundle:ClientService')
+        ->getSumProduitClient($client->getId());
+
+    $countProduitClient = $this->container->get('doctrine')
+        ->getManager()
+        ->getRepository('MyAppApBundle:ClientService')
+        ->getCountProduitClient($client->getId());
 
 
              $query = $em->createQuery('SELECT a.city FROM MyAppApBundle:Client c JOIN c.city a 
@@ -126,13 +150,17 @@ $clientservicestest->execute();
     'response' => $response,
     'map' => $map,
     'clientservicestest' => $clientservicestest,
-
+    'sumContratClient' => $sumContratClient[0][1],
+    'sumSigneClient' => $sumSigneClient[0][1],
+    'countSigneClient' => $countSigneClient[0][1],
+    'sumProduitClient' => $sumProduitClient[0][1],
+    'countProduitClient' => $countProduitClient[0][1],
     ));
     } 
      
   public function voirServiceAction($id) 
     { 
-    $em = $this->container->get('doctrine')->getEntityManager();
+    $em = $this->container->get('doctrine')->getManager();
     $client = $em->find('MyAppApBundle:Client', $id);
          $message = '';
     
@@ -148,7 +176,7 @@ $clientservicestest->execute();
                     
             if ($form->isValid()) 
                 {       
-                    $em = $this->container->get('doctrine')->getEntityManager();
+                    $em = $this->container->get('doctrine')->getManager();
                     $em->persist($client);
                     $em->flush();
                     $message='Etat ajouté avec succès !';
@@ -162,7 +190,7 @@ $clientservicestest->execute();
     } 
        public function suivantAction($id)
     {
-        $em = $this->container->get('doctrine')->getEntityManager();
+        $em = $this->container->get('doctrine')->getManager();
           $request = $this->container->get('request');
           $param = $request->get('param');
           $etat = $request->get('etat');

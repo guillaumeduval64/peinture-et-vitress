@@ -2,7 +2,7 @@
 
 {% block title %}Modifier production{% endblock %}    
 {% block recherche %}
- {{ production.client.nom|capitalize }} {{ production.client.prenom|capitalize }} - {{ contrat[0].contratEstimation }}: {{ contrat[0].numero }}
+<h3 style="display: inline-block; margin-top: 0px;"> {{ production.client.nom|capitalize }} {{ production.client.prenom|capitalize }} </h3>- {{ contrat[0].contratEstimation }}: {{ contrat[0].numero }}
  {% if message %}
 <p><img src="{{ asset('bundles/myappap/images/check.png') }}" title="Ajouté"/> {{ message }}</p>
 {% endif %}
@@ -11,22 +11,19 @@
 {% block page %}
  <a href="{{ path('myapp_estimation_voirClient', { 'id': production.client.id }) }}"><img src="{{ asset('bundles/myappap/images/user.png') }}" title="Voir Fiche client"/>
     <a href="{{ path('myapp_satisfaction_ajouter', { 'id': production.id }) }}"><img src="{{ asset('bundles/myappap/images/check.png') }}" title="Début"/></a>
-{% endblock %}  
+     <a href="{{ path('myapp_clientContrat_voir', { 'id': contrat[0].id }) }}"><image src="{{ asset('bundles/myappap/images/barcode.png') }}"/></a>
+ {% endblock %}
 
-{% block principalNote %}
-<div id="containerProd">
-
+{% block content %}
 <div id="prodBlock">
 <h3>Etat de la production:</h3>
 
 
 
-
-<form class="form-horizontal" action="" method="post" {{ form_enctype(formEtat) }}>
+<form class="form-horizontal" action="{{ path('myapp_production_modifier', { 'id': production.id }) }}" method="post" {{ form_enctype(formEtat) }}>
     <table id="tableauProd">   
         <tr>
             <td>
-                
                     <div class="error">
             {{ form_errors(formEtat) }}
                         </div>
@@ -172,13 +169,28 @@
           <form action="{{ path('myapp_production_start', {'id': production.id}) }}" method="post" {{ form_enctype(form) }}>    
     {{ form_widget(formStart) }}
 
-<table id="formulaire">
+
+
+
+
+
+
+
+
+
+
+
+
+  <table class="table table-hover">
+  
+<tr>
     <th></th>
     <th></th>
 <th>Début à: </th>
 <th>Fin à: </th>
 <th>Equipe: </th>
-{% for key, e in equipe %}        
+<tr>
+       {% for key, e in equipe %} 
     <tr>
         <td>{{ key+1 }}:</td> 
         <td> {{ e.heureD|date('d/m/y') }} </td> 

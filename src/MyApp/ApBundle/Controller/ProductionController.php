@@ -235,7 +235,7 @@ $equipe->execute();
          $query = $em->createQuery('SELECT a FROM MyAppApBundle:Contrat a JOIN a.production u WHERE u.id = :id')
         ->setParameter('id', $id);
         $contrat = $query->getResult();
-        
+
         if (isset($id)) 
             {
                     // modification d'un acteur existant : on recherche ses données
@@ -252,18 +252,17 @@ $equipe->execute();
 
             if ($request->getMethod() == 'POST') 
             {
+
                         $formEtat->bind($request);
 
-                if ($formEtat->isValid()) 
-                {
-                    
+
                         $em->persist($production);
                         $em->flush();
 
                         if (isset($id)) 
                             {
                             }
-                }
+
             }
             $comptabilite = new Comptabilite();
                     $form = $this->container->get('form.factory')->create(new ComptabiliteForm(), $comptabilite);
@@ -306,8 +305,7 @@ $equipe->execute();
         {
             $form->bind($request);
                     
-            if ($form->isValid()) 
-                {       
+           
                     if ($production)
                     {
                         $comptabilite -> setProduction($production);
@@ -321,7 +319,7 @@ $equipe->execute();
                     $em->flush();
                     $message='Bill ajouté avec succès !';
                     
-                }
+            
                     return new RedirectResponse($this->container->get('router')->generate('myapp_production_modifier',array('id'=>$id, 'message'=>'Service supprimé avec succès !')));
 
         }

@@ -1,15 +1,27 @@
-{% extends 'MyAppApBundle::layout.html.twig' %}
 {% block title %}{% endblock %}
 
 {% block content %}
-{% if message %}
-<p>{{ message }}</p>
-{% endif %}
-<h6>Ajouter un service à: {{ client.prenom|capitalize }} {{ client.nom|upper }} </h6>
-<form action="" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
-    <input type="image" src="{{ asset('bundles/myappap/images/add.png') }}"/>
-</form>
 
+
+
+  <div class="modal-dialog">
+  <form action="{{ path('myapp_estimation_creerService', { 'id': client.id }) }}" method="post" {{ form_enctype(form) }}>
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Ajouter un service à: {{ client.prenom|capitalize }} {{ client.nom|upper }} </h4>
+      </div>
+      <div class="modal-body">
+
+    {{ form_widget(form) }}
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <input type="image" src="{{ asset('bundles/myappap/images/add.png') }}" />
+      </div>
+    </div>
+    </form>
+  </div>
 
 {% endblock %}

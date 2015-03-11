@@ -2757,7 +2757,7 @@ body .colapsed-menu::-webkit-scrollbar {
 }
 .content-20 {
   position: relative;
-  padding: 200px 0;
+  padding: 50px 0;
 }
 .content-20.v-center,
 .content-20 .v-center {
@@ -3003,7 +3003,7 @@ body .colapsed-menu::-webkit-scrollbar {
   }
 }
 .content-20 .features {
-  margin-top: 40px;
+  margin-top: 10px;
   font-size: 14px;
   font-weight: normal;
   color: #95a5a6;

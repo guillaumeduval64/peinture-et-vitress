@@ -158,6 +158,7 @@ abstract class FrameworkExtensionTest extends TestCase
         $this->assertEquals(array('php', 'twig'), $container->getParameter('templating.engines'), '->registerTemplatingConfiguration() sets a templating.engines parameter');
 
         $this->assertEquals(array('FrameworkBundle:Form', 'theme1', 'theme2'), $container->getParameter('templating.helper.form.resources'), '->registerTemplatingConfiguration() registers the theme and adds the base theme');
+        $this->assertEquals('global_hinclude_template', $container->getParameter('fragment.renderer.hinclude.global_template'), '->registerTemplatingConfiguration() registers the global hinclude.js template');
     }
 
     public function testTemplatingAssetsHelperScopeDependsOnPackageArgumentScopes()
@@ -184,19 +185,19 @@ abstract class FrameworkExtensionTest extends TestCase
         $files = array_map(function ($resource) { return realpath($resource[1]); }, $resources);
         $ref = new \ReflectionClass('Symfony\Component\Validator\Validator');
         $this->assertContains(
-            strtr(dirname($ref->getFileName()) . '/Resources/translations/validators.en.xlf', '/', DIRECTORY_SEPARATOR),
+            strtr(dirname($ref->getFileName()).'/Resources/translations/validators.en.xlf', '/', DIRECTORY_SEPARATOR),
             $files,
             '->registerTranslatorConfiguration() finds Validator translation resources'
         );
         $ref = new \ReflectionClass('Symfony\Component\Form\Form');
         $this->assertContains(
-            strtr(dirname($ref->getFileName()) . '/Resources/translations/validators.en.xlf', '/', DIRECTORY_SEPARATOR),
+            strtr(dirname($ref->getFileName()).'/Resources/translations/validators.en.xlf', '/', DIRECTORY_SEPARATOR),
             $files,
             '->registerTranslatorConfiguration() finds Form translation resources'
         );
         $ref = new \ReflectionClass('Symfony\Component\Security\Core\SecurityContext');
         $this->assertContains(
-            strtr(dirname(dirname($ref->getFileName())) . '/Resources/translations/security.en.xlf', '/', DIRECTORY_SEPARATOR),
+            strtr(dirname(dirname($ref->getFileName())).'/Resources/translations/security.en.xlf', '/', DIRECTORY_SEPARATOR),
             $files,
             '->registerTranslatorConfiguration() finds Security translation resources'
         );

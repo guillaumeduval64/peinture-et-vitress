@@ -218,12 +218,14 @@ class ContratController extends ContainerAware
 
         if ($request->getMethod() == 'POST') 
         {
+
             $form->bind($request);
+
+
 
             //var_dump($test);
 //j'ai enlevé le  if ($form->isValid()) qui me faisait pas passer
   
-                    $em = $this->container->get('doctrine')->getEntityManager();
                     $production = new Production();
                     $contrat -> setProduction($production);
 
@@ -234,18 +236,25 @@ class ContratController extends ContainerAware
                     else
                         { 
                         $production -> setStatut('Non Booké');
-                        } 
+                        }
+            $user = $this->container->get('security.context')->getToken()->getUser();
+            $lastContrat = $em->getRepository('MyAppApBundle:Contrat')->getLastContrat($user);
+if(isset( $lastContrat[0]['numero'])){
+    $lastContrat = $lastContrat[0]['numero'] +1;
+}else{
+    $lastContrat = 1;
+}
 
                     $production -> setClient($client);
                     $contrat -> setClient($client);
+                    $contrat -> setNumero($lastContrat);
                     $em->persist($production);
                     $em->persist($contrat);
                     $em->flush();
                     $message='Contrat ajouté avec succès !';
-                     return new RedirectResponse($this->container->get('router')->generate('myapp_estimation_voirClient',array('id'=>$id, 'message'=>'Service supprimé avec succès !'))); 
-              
-         }
+                  return new RedirectResponse($this->container->get('router')->generate('myapp_estimation_voirClient',array('id'=>$id, 'message'=>'Service supprimé avec succès !'))); 
 
+         }
         return $this->container->get('templating')->renderResponse(
         'MyAppApBundle:Contrat:ajouter.html.twig',
         array(
@@ -295,14 +304,12 @@ class ContratController extends ContainerAware
         $form = $this->container->get('form.factory')->create(new ContratEstimationForm($id), $contrat);
         $request = $this->container->get('request');
 
-        if ($request->getMethod() == 'POST') 
-        {
-            $form->bind($request);
+        if ($request->isMethod('POST')) {
+        $form->submit($request->request->get($form->getName()));
 
-                    
-            if ($form->isValid()) 
+      
 
-                {                 
+ 
                  if ($contrat -> getContratEstimation() =="Estimation")
                         { 
                         $production -> setStatut('Non défini');
@@ -311,14 +318,15 @@ class ContratController extends ContainerAware
                         { 
                         $production -> setStatut('Non Booké');
                         } 
-                        
+
                     $em->persist($contrat);
                     $em->persist($production);
                     $em->flush();
                 }
+            
                         
                $contrat= $em->getRepository('MyAppApBundle:Contrat')->find($id);
-         }
+         
 	
 	return $this->container->get('templating')->renderResponse('MyAppApBundle:Contrat:voir.html.twig', 
 	array(

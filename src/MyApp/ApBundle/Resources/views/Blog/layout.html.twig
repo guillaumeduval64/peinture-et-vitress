@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+
+
+        {% stylesheets filter='cssrewrite' output='css/back.css'
+            '@MyAppApBundle/Resources/public/css/modern.css'
+            '@MyAppApBundle/Resources/public/css/jquery-ui-1.10.1.css'
+            '@MyAppApBundle/Resources/public/css/jquery.ui.timepicker.css'
+            '@MyAppApBundle/Resources/public/css/menu/normalize.css'
+            '@MyAppApBundle/Resources/public/css/menu/demo.css'
+            '@MyAppApBundle/Resources/public/css/menu/icons.css'
+            '@MyAppApBundle/Resources/public/css/menu/component.css'
+            '@MyAppApBundle/Resources/public/css/menu/componentt.css'
+            '@MyAppApBundle/Resources/public/bootstrap-3.2.0/css/bootstrap.css'
+            '@MyAppApBundle/Resources/public/css/menu/default.css'
+
+
+        %}
+        <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+        {% endstylesheets %}
+
+<link rel="stylesheet" href="{{ asset('bundles/myappap/css/menu/default.css') }}" type="text/css" media="all" />
+<link rel="shortcut icon" href="../favicon.ico">
+        
+
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+
+{% javascripts
+    '@MyAppApBundle/Resources/public/js/jquery-ui-1.10.1.js'
+    '@MyAppApBundle/Resources/public/js/menu/modernizr.custom.js'
+    '@MyAppApBundle/Resources/public/js/menu/classie.js'
+    '@MyAppApBundle/Resources/public/js/menu/mlpushmenu.js'
+    '@MyAppApBundle/Resources/public/js/dialog.js'
+    '@MyAppApBundle/Resources/public/js/dropdown.js'
+    '@MyAppApBundle/Resources/public/js/jquery.maskedinput.js'
+    '@MyAppApBundle/Resources/public/js/jquery.number.js'
+    '@MyAppApBundle/Resources/public/js/chart/Chart.js'
+    '@MyAppApBundle/Resources/public/bootstrap-3.2.0/js/bootstrap.js'
+    '@MyAppApBundle/Resources/public/js/date.js'
+    '@MyAppApBundle/Resources/public/js/couleurs-stats.js'
+ %}
+    <script src="{{ asset_url }}"></script>
+  
+
+    <script type="text/javascript">
+
+
+  
+
+
+ window.onLoad = function() {
+                init();
+            };
+
+            function init() {
+$('#comptabilite_montant').number( true, 2 );
+
+
+
+
+
+
+
+
+
+
+
+
+var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
+
+    var barChartData = {
+        labels : ["January","February","March","April","May","June","July"],
+        datasets : [
+            {
+                fillColor : "rgba(220,220,220,0.5)",
+                strokeColor : "rgba(220,220,220,0.8)",
+                highlightFill: "rgba(220,220,220,0.75)",
+                highlightStroke: "rgba(220,220,220,1)",
+                data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+            },
+            {
+                fillColor : "rgba(151,187,205,0.5)",
+                strokeColor : "rgba(151,187,205,0.8)",
+                highlightFill : "rgba(151,187,205,0.75)",
+                highlightStroke : "rgba(151,187,205,1)",
+                data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+            }
+        ]
+
+    }
+    window.onload = function(){
+        var ctx = document.getElementById("canvas").getContext("2d");
+        window.myBar = new Chart(ctx).Bar(barChartData, {
+            responsive : true
+        });
+    }
+}
+
+
+
+
+
+  function overlay() {
+  el = document.getElementById("overlay");
+  el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
+}
+</script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> 
+
+{% endjavascripts %}
+            <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    </head>
+    <body>
+    <title>Intranet</title>
+<div class="container">
+            <!-- Push Wrapper -->
+
+
+
+                <div class="scroller"><!-- this is for emulating position fixed of the nav -->
+                    <div class="scroller-inner">
+                        <!-- Top Navigation -->
+                        <div class="codrops-top clearfix">
+                           <span>{% block previous %}{% endblock %}</span>
+                           <span>{% block next %}{% endblock %}</span>
+                        </div>
+                        <div>
+                            <div id="choisir_langue" style="padding-right: 100px; float: right; padding-top: 5px;">
+                                   {% for locale in ['en', 'fr'] %}
+                <span><li {% if locale == app.request.locale %}class="active"{% endif %}>
+                    <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : locale})) }}"><h5 class="fg-color-blue">{{ locale|capitalize }}</h5></a>
+                </li><span>
+            {% endfor %}
+</div>
+{% include "MyAppUtilisateurBundle::connexion.html.twig" %}
+                        </div>
+
+
+
+    <div class="container">
+       <header class="codrops-header">
+                            <h1 style="padding-top: 20px;">{% block title %}{% endblock %}</h1>
+                        </header>
+            <header class="clearfix">
+                <nav>
+                    <a href="{{ path('myapp_front_index') }}" class="bp-icon bp-icon-prev" data-info="Index"><span>Index</span></a>
+                    <a href="{{ path('myapp_client_lister') }}" class="bp-icon bp-icon-next" data-info="Client"><span>Client</span></a>
+                    <a href="{{ path('myapp_rdv_lister') }}" class="bp-icon bp-icon-drop" data-info="RDV"><span>RDV</span></a>
+                    <a href="{{ path('myapp_contrat_lister') }}" class="bp-icon bp-icon-archive" data-info="Contrat"><span>Contrat</span></a>
+                    <a href="{{ path('myapp_production_booke') }}" class="bp-icon bp-icon-prev" data-info="Production"><span>Production</span></a>
+                    <a href="{{ path('myapp_comptabilite_lister') }}" class="bp-icon bp-icon-prev" data-info="Comptabilité"><span>Comptabilité</span></a>
+                    <a href="{{ path('myapp_map_voir') }}" class="bp-icon bp-icon-prev" data-info="Map"><span>Map</span></a>
+                    <a href="{{ path('myapp_message_liste') }}" class="bp-icon bp-icon-prev" data-info="Message"><span>Message</span></a>
+                </nav>
+            </header>   
+
+
+
+            <div class="main">
+                <div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-list">
+                    <div class="cbp-vm-options">
+
+<div class="recherche">
+{% block recherche %}
+{% endblock %}
+</div>
+<div class="page">
+{% block page %}
+{% endblock %}
+{% for flashMessage in app.session.flashbag.get('notice') %}
+<div class="flash-notice" style="float:right;">
+
+    {{ flashMessage }}
+   
+    </div>
+    {% endfor %}
+</div>
+</div>
+                    {% block content %}
+                    {% for flashMessage in app.session.flashbag.get('notice') %}
+{% endfor %}
+{% endblock %}
+
+                    
+                        {% block principalNote %}
+                    <div id="principalNote"></div>
+                        {% endblock %}
+                   
+                        {% block right %}
+                        {% endblock %}
+                
+                    
+                    <div id="billFinal">
+                        {% block billFinal %}
+                        {% endblock %}
+                    </div>
+                    </div>
+
+
+                </div>
+            </div><!-- /main -->
+        </div><!-- /container -->
+
+
+
+
+
+            <div id="page">
+                 <div id="logo">
+        <!--<img src="{{ asset('bundles/myappap/images/logo.png') }}" title="Client"/>-->
+                </div>
+
+                <div id="header">
+
+
+                    {% block javascripts %}{% endblock %}             
+                </div>
+                <div id="noteRight">
+                    {% block note %}
+                    {% endblock %}
+                    {% block bill %}
+                    {% endblock %}
+                </div>    
+                </div>
+                </div>
+                </div>
+                <div id="footer">
+                <div id="reserved">
+                                                
+                                               
+                                    <p>{{ "rights" | trans }} © 2012</p>
+</div>
+
+                        
+            </div><!-- /pusher -->
+        </div><!-- /container -->
+
+        </div>
+        </div>
+        </div>
+
+
+
+
+
+    </body>
+</html>

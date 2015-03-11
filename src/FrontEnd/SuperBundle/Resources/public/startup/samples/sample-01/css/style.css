@@ -249,7 +249,7 @@ footer {
   background-color: #34495e;
 }
 .bg-midnight-blue {
-  background-color: #2c3e50;
+  background-color: #587691;
 }
 .bg-sun-flower {
   background-color: #f1c40f;
@@ -850,7 +850,7 @@ section * {
   position: fixed;
 }
 .header-1 .navbar .brand {
-  font-size: 25px;
+  font-size: 50px;
   font-weight: normal;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 800;
@@ -1017,7 +1017,7 @@ section * {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 130px;
+  bottom: 35px;
 }
 @media (max-width: 480px) {
   .header-1-sub .page-transitions .caption {
@@ -1095,12 +1095,12 @@ section * {
 }
 .content-4 .features > [class*="col-sm-"] {
   position: relative;
-  padding-top: 180px;
+  padding-top: 135px;
   padding-bottom: 50px;
 }
 .content-4 .features > [class*="col-sm-"] > img:first-child {
   position: absolute;
-  left: 15px;
+  left: 105px;
   top: 30px;
 }
 .content-4 .features:last-child > [class*="col-sm-"],
@@ -1356,7 +1356,7 @@ section * {
   padding-bottom: 80px;
 }
 .header-1-sub .pt-page-1 .background {
-  background-image: url('../img/top-01.png');
+  background-image: url('../img/montreal_header.jpg');
   opacity: 50;
   filter: alpha(opacity=5000);
   opacity: 0.5;

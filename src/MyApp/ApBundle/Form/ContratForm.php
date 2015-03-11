@@ -28,8 +28,7 @@ class ContratForm extends AbstractType
             'required' => true,
             'label' => 'Services: '));
                                                                             
-            $builder->add('numero','text', array('label' =>'contrat n: '))
-                    ->add('date','date', array(
+            $builder->add('date','date', array(
                         'widget' => 'single_text',
                         'format' => 'dd MMM yyyy',
                         'required' => false,
@@ -38,6 +37,7 @@ class ContratForm extends AbstractType
                         'choices' => array('Estimation'=>'Estimation','Contrat'=>'Contrat'),
                         'label' => 'Statut: ',
                         ));
+                    
     }
     
     public function getName()

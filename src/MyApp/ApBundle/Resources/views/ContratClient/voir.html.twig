@@ -1,153 +1,151 @@
 {% extends 'MyAppApBundle:ContratClient:voirLayout.html.twig' %}
 
-{% block contrat %}
-{{ contrat.contratEstimation }}: <b>{{ contrat.numero }}</b>
-{% endblock %}
-{% block logo %}
-<img src="{{ asset('bundles/myappap/images/logo.png') }}" title="Ajouter Client"/>
-{% endblock %}
+{% block content %}
 
-{% block travailleurAutonome %}
+<div class="container">
+      <div class="row">
+        <div class="col-xs-6">
+          <h1>
+            <img src="{{ asset('bundles/myappap/images/logo.png') }}" width="500" />
+            </a>
+          </h1>
+        </div>
+        <div class="col-xs-6 text-right">
+          <h1>{{ contrat.contratEstimation }}</h1>
+          <h1><small> <b>#{{ contrat.numero }}</b></small></h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-5">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4>From: <a href="#">Laure DUHAMELET</a></h4>
+            </div>
+            <div class="panel-body">
+              <p>
+                #180, Villeneuve Est <br>
+                Montréal, QC <br>
+                H2T-1L5 <br>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-5 col-xs-offset-2 text-right">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4>To : <a href="#">{{ contrat.production.client.prenom|upper }} {{ contrat.production.client.nom|upper }}</a></h4>
+            </div>
+            <div class="panel-body">
+             <p> {{ contrat.production.client.number}}
+        {{ contrat.production.client.street|capitalize }}<br>
+        {{ contrat.production.client.city.city|capitalize }}<br>
+        {{ contrat.production.client.pc|upper }}<br>
 
-<table>
-    <tr><td><b><h2>Travailleur Autonome:</b></h2></td></tr>
-    <tr><td></td></tr>
-    <tr>
-        <td><b>Nom:</b></td> 
-        <td><b>Prenom:</b></td> 
-    </tr>   
-    <tr>
-        <td>DUVAL</td>
-        <td>Guillaume</td>
-    </tr>
-    <tr><td></td></tr>
-    <tr>
-        <td><b>Numero: </b></td>
-        <td><b>Rue: </b></td>
-        <td><b>Ville: </b></td>
-        <td><b>Cp: </b></td>
-    </tr>
-        <td>#2, 100</td>
-        <td>Bd Saint-Joseph ouest</td>
-        <td>Montreal</td>
-        <td>H2T-2P6</td>
-    <tr><td></td></tr>
-</table>
-{% endblock %}
-
-{% block client %}
-<table>
-    <tr><td><b><h2>Client:</h2></b></td></tr>
-    <tr><td></td></tr>
-    <tr>
-        <td><b>Nom:</b></td> 
-        <td><b>Prenom:</b></td> 
-    </tr>   
-    <tr>
-        <td>{{ contrat.production.client.nom|upper }}</td>
-        <td>{{ contrat.production.client.prenom|capitalize }}</td>
-    </tr>
-    <tr><td></td></tr>
-    <tr>
-        <td><b>Numero: </b></td>
-        <td><b>Rue: </b></td>
-        <td><b>Ville: </b></td>
-        <td><b>Cp: </b></td>
-    </tr>
-        <td>{{ contrat.production.client.number}}</td>
-        <td>{{ contrat.production.client.street|capitalize }}</td>
-        <td>{{ contrat.production.client.city.city|capitalize }}</td>
-        <td>{{ contrat.production.client.pc|upper }}</td>
-    <tr><td></td></tr>
-        <tr>
-            {% for s in contrat.production.client.phones %}
-        <td><b>{{ s.phoneType.id }} Téléphone:</b></td>
+   {% for s in contrat.production.client.phones %}
+        {{ s.phoneType.id }}<br>
         {% endfor %}
-        <td><b>Email: </b></td>
-    </tr>
     {% for s in contrat.production.client.phones %}
-        <td>{{ s.phone}}</td>
+        {{ s.phone}}<br>
         {% endfor %}
-        <td>{{ contrat.production.client.email }}</td>
-    <tr><td></td></tr>
-</table>
-{% endblock %}
+        {{ contrat.production.client.email }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <table class="table table-bordered">
+ <thead>
+          <tr>
+            <th>
+              <h4>Service</h4>
+            </th>
+            <th>
+              <h4>Description</h4>
+            </th>
+            <th>
+              <h4>Rate/Price</h4>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
 
-{% block service %}
-<h1>Détails {{ contrat.contratEstimation|lower }}: </h1>
-<table>
+
+
 {% for s in contrat.clientService %}
-<table>
+
     <tr>
-        <td>{{ s.service.type }}</td>
-        <td>{{ s.prix|number_format(2, ',', '.') }} $</td></tr> 
-    <tr> 
-        <td>Note:</td>
+        <td>{{ s.service.type|upper }}</td>
         <td>{{ s.note|capitalize }}</td>
+        <td>{{ s.prix|number_format(2, ',', '.') }} $</td>      
     </tr>    
 </table>
         <br>
 
 {% else %}
-<table>
     <tr>
-	<td>Aucun Services trouvés</td>
+    <td>Aucun services trouvés</td>
     </tr>
-</table>
 {% endfor %}
-<table>
-        <tr> 
-            <td>Total:</td>
-            <td>{{ total['0']['1']|number_format(2, ',', '.') }} $</td>
-        </tr> 
-                <tr> 
-            <td>Dépôt:</td>
-            <td>{{ contrat.depot|number_format(2, ',', '.') }} $</td>
-        </tr> 
-        <tr> 
-            <td></td>
-            </tr>
-                <tr> 
-            <td>Balance:</td>
-            <td>{{ balance|number_format(2, ',', '.') }} $</td>
-        </tr> 
-</table>
-
-{% endblock %}
-
-{% block note %}
-<h3>Détails additionnels:</h3>
-{{ contrat.production.note|capitalize}}
-{% endblock %}
-{% block date %}
-<table>
-    <tr>
-        <td>Date de production: {{ contrat.production.dateProd|date('d/m/y') }}</td> 
-    </tr>
-</table>
-{% endblock %}
-{% block signature %}
-<table>
-    <tr>
-        <td>
-            Date signature: ____ / ____ / ________
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Signature Entrepreneur:
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Signature client:
-        </td>
-    </tr>
-
-</table>
-{% endblock %}
-{% block clauses %}
-<p><b>Termes et Conditions du contrat:</b></p>
-<p>Devis:L'ensemble des détails des travaux à executer est present sur le devis. Aucuns travaux non-inscrits ne seront effectués.</p>
+        </tbody>
+      </table>
+      <div class="row text-right">
+        <div class="col-xs-2 col-xs-offset-8">
+          <p>
+            <strong>
+            Sub Total : <br>
+            Dépôt: <br>
+            TAX : <br>
+            Total : <br>
+            </strong>
+          </p>
+        </div>
+        <div class="col-xs-2">
+          <strong>
+          {{ total['0']['1']|number_format(2, ',', '.') }} $ <br>
+          {{ contrat.depot|number_format(2, ',', '.') }} $ <br>
+          N/A <br>
+          {{ balance|number_format(2, ',', '.') }} $ <br>
+          </strong>
+        </div>
+      </div>
+<p>
+ <h4>Détails :{{ contrat.contratEstimation|lower }}: </h4><br>
+Date production: {{ contrat.production.dateProd|date('d/m/y') }}
+<h4>Détails production:</h4> 
+{{ contrat.production.note|capitalize}}</p>
+      <div class="row">
+        <div class="col-xs-5">
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h4>Signature details</h4>
+            </div>
+            <div class="panel-body">
+              <p>Signature Entrepreneur:</p>
+              <p>Signature Client:</p>
+              <p>Date signature: ____ / ____ / ________</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-7">
+          <div class="span7">
+            <div class="panel panel-info">
+              <div class="panel-heading">
+                <h4>Contact Details</h4>
+              </div>
+              <div class="panel-body">
+                <p
+                  {% if contrat.production.client.email is defined %}Email : {{ contrat.production.client.email|upper }}<br><br> {% endif %}
+                  Mobile : {% for phone in contrat.production.client.phones %}<br>{{ phone.phoneType.id|upper }} :{{ phone.phone|upper }} {% endfor %}<br> <br>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p><b>Termes et Conditions du contrat:</b></p>
+<p>Devis: L'ensemble des détails des travaux à executer est present sur le devis. Aucuns travaux non-inscrits ne seront effectués.</p>
 <p>Défauts non-visibles: Le contrat est effectué aprés une inspection visuelle or advenant des difficultés qui n'auraient pu être décelées lors du devis, une réévaluation sera faite avec le client suite aux défauts apparus.</p>
+      </div>
+    </div>
+
+
 {% endblock %}

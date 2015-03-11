@@ -13,6 +13,7 @@
 .cbp-vm-switcher {
 	padding: 20px;
 	border: 3px solid #47a3da;
+	overflow: hidden;
 }
 
 /* options/select wrapper with switch anchors */
@@ -253,11 +254,11 @@
 
 .page{
 	float: right;
+	padding-top: 10px;
 }
 
 #prodBlock{
 	width:500px;
-	height: 520px;
 	float: left;
 	padding-left: 50px;
 }

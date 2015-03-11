@@ -1,5 +1,19 @@
 # CHANGELOG
 
+### 1.4.1 (2014-10-30)
+
+ * 882cb65 - [Services] Fix origins/destinations switch for distance matrix construction
+ * 197fcf1 - [Services] Handle http errors (4XX/5XX)
+ * 188dc68 - [Gitignore] Remove Composer installer and phar
+ * 5606a85 - Migrate to PSR-4
+ * ddcf4ae - [Composer] Refine deps
+ * e107ab4 - [Travis] Add hhvm-nightly + Allow hhvm/hhvm-nightly to fail
+ * e152093 - Updated to use widop/http-adapter version 1.1+
+ * afc822c - Added PHP 5.6 and HHVM to travis.yml
+ * dbc3965 - [Travis][Composer] Remove --dev
+ * 6203fee - [Composer] Upgrade to PSR-4
+ * fba0016 - [Autoload] Remove dist file
+
 ### 1.4.0 (2014-06-17)
 
  * c622643 - [Helper][Map] Introduce renderJsContainerExtra

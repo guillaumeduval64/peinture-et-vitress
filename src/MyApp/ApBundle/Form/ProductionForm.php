@@ -35,11 +35,13 @@ class ProductionForm extends AbstractType
                 
             ->add('previsionHeureD', 'time', array(
                 'widget' => 'single_text',
-                'label' => 'Prev. h deb: '
+                'label' => 'Prev. h deb: ',
+                'required' => false,
             ))
            ->add('previsionHeureF', 'time', array(
                 'widget' => 'single_text',
-               'label' => 'Prev. h fin: '
+               'label' => 'Prev. h fin: ',
+               'required' => false,
             ))
             
             ->add('note', 'textarea', array(

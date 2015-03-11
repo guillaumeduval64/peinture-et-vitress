@@ -1,7 +1,7 @@
-        <table class="centrer">
+        <table class="table table-hover">
 <tr>
 {# sorting of properties based on query components #}
-    <th><h3>{{ knp_pagination_sortable(pagination, 'Flag', 'c.noticeClient') }}</h3></th>
+    <th>{{ knp_pagination_sortable(pagination, 'Flag', 'c.noticeClient') }}</th>
     <th>{{ knp_pagination_sortable(pagination, 'Date', 'c.created') }}</th>
     <th>{{ knp_pagination_sortable(pagination, 'Rappel', 'c.date') }}</th>
     <th>{{ knp_pagination_sortable(pagination, "client.nom" | trans, 'c.nom') }}</th>
@@ -11,15 +11,14 @@
 </tr>
                         {% for client in pagination %}
                             <tr {% if loop.index is odd %}class="color"{% endif %}>
-                                <td>{% if client.flag %}<img src="{{ asset('bundles/myappap/images/flamme.png') }}" title="Attention"/>{% endif %}</td>
+                                <td>{% if client.flag %}<img src="{{ asset('bundles/myappap/images/bookmark-2x.png') }}" title="Attention"/>{% endif %}</td>
                                 <td><span class="cbp-vm-title">{{ client.created|date('d/m/y') }}</span></td>
                                 <td>{% if client.date != null %}{{ client.date|date('d/m/y') }}{% endif %}</td>
-                                <td><h3>{{ client.nom|capitalize }} {{ client.prenom|capitalize }}</h3></a></td>
+                                <td><h4><a href="{{ path('myapp_estimation_voirClient', { 'id': client.id }) }}">{{ client.nom|capitalize }} {{ client.prenom|capitalize }}</a></h4></td>
                                 <td>{{ client.service.type|capitalize }}</td>
-                                <td class="cbp-vm-price">$</td>
+                                <td class="cbp-vm-price">$10</td>
                                 <td>{{ client.city.city }}</td>
-                                <td><a class="cbp-vm-icon cbp-vm-add" href="{{ path('myapp_estimation_voirClient', { 'id': client.id }) }}">Voir</a></td>
-                                <td><a class="cbp-vm-icon cbp-vm-add" href="{{ path('myapp_client_modifier', { 'id': client.id }) }}">Modifier</a></td>
+                                <td><a href="{{ path('myapp_client_modifier', { 'id': client.id }) }}"><img src="{{ asset('bundles/myappap/images/clipboard-2x.png') }}" title="Attention"/></a></td>
                             </tr>
                         {% endfor %}
 </table>

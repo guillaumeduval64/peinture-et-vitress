@@ -95,7 +95,6 @@ class Client
     
      /**
      * @ORM\ManyToOne(targetEntity="Service", cascade={"persist","remove"})
-     * @Assert\NotBlank()
      */    
     private $service;
     
@@ -118,6 +117,11 @@ class Client
      * @ORM\OneToMany(targetEntity="Contrat", mappedBy="client", cascade={"persist","remove"})
      */    
     private $contrat;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Production", mappedBy="client", cascade={"persist","remove"})
+     */
+    private $production;
     
      /**
      * @ORM\ManyToMany(targetEntity="Titles")

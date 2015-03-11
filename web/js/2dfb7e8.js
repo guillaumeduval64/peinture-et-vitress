@@ -15934,6 +15934,8 @@ $.fn.extend({
 
 })(jQuery);
 $(document).ready(function() {
+    window.onerror = function(msg, url, line)
+{
 var test;
 
 var items = document.getElementsByClassName('currentMatch');
@@ -15956,6 +15958,7 @@ items[i].style.color = newColor;;
 alert(items[i].style.color);
 }
 
+}
 });
 
 
@@ -22099,15 +22102,11 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
 
 }(jQuery);
 
-$(document).ready($(function() {
+jQuery(document).ready(function(){
     $( ".date").datepicker({
                         autoSize: true,
                         changeMonth: true,
                         changeYear: true,
                     dateFormat: 'dd MM yy'
                 });
-
-
-        $(".timepicker").timepicker();
-
-    }));
+    });

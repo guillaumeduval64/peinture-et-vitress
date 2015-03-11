@@ -5,9 +5,11 @@
 {{ contrat.client.nom|upper }} {{ contrat.client.prenom|capitalize }}
 {% endblock %}
 {% block page %}
-<a href="{{ path('myapp_production_modifier', { 'id': contrat.production.id }) }}">Modifier production</a>
-    <a href="{{ path('myapp_clientContrat_voir', { 'id': contrat.id }) }}"><image src="{{ asset('bundles/myappap/images/barcode.png') }}" style="padding-left:50px;"/></a>
-{% endblock %}
+ <a href="{{ path('myapp_estimation_voirClient', { 'id': contrat.client.id }) }}"><img src="{{ asset('bundles/myappap/images/user.png') }}" title="Voir Fiche client"/>
+<a href="{{ path('myapp_production_modifier', { 'id': contrat.production.id }) }}" style="padding-left:10px;"><image src="{{ asset('bundles/myappap/images/wrench.png') }}"/></a>
+     <a href="{{ path('myapp_clientContrat_voir', { 'id': contrat.id }) }}" style="padding-left:10px;"><image src="{{ asset('bundles/myappap/images/barcode.png') }}"/></a>
+
+     {% endblock %}
 {% block content %}
 {% if message %}
 <img src="{{ asset('bundles/myappap/images/check.png') }}"/>
@@ -28,7 +30,7 @@
         <td>{{ s.created|date('d/m/y') }}</td>
         <td>{{ s.note }}</td>
         <td>{{ s.id }}</td>
-        <td><a href="{{ path('myapp_contrat_supprimerService', { 'idd': s.id, 'id': contrat.id }) }}"><img src="{{ asset('bundles/myappap/images/cross.png') }}" title="Supprimer service"/></a></td>
+        <td><a href="{{ path('myapp_contrat_supprimerService', { 'idd': s.id, 'id': contrat.id }) }}" onclick="return confirm('are you sure?')"><img src="{{ asset('bundles/myappap/images/cross.png') }}" title="Supprimer service"/></a></td>
     </tr>    
 {% else %}
     <tr>
@@ -64,7 +66,7 @@
     <table>
         <tr>    
             <td>
-            {{ form_widget(form.date, { 'attr': {'placeholder': 'Date', 'class':'input-small date'} }) }}            
+            {{ form_widget(form.date, { 'attr': {'placeholder': 'Date', 'class':'date'} }) }}            
             </td>
         </tr>
         <tr>    
@@ -82,7 +84,7 @@
         </tr>
         <tr>    
             <td>
-            {{ form_widget(form.dateDepot, { 'attr': {'placeholder': 'Date du dépôt', 'class':'input-small date'} }) }}
+            {{ form_widget(form.dateDepot, { 'attr': {'placeholder': 'Date du dépôt', 'class':'date'} }) }}
             </td>
         </tr>
         {{ form_rest(form) }}
@@ -96,5 +98,5 @@
 </form>
 
 </div>
-                                              
+
 {% endblock %}

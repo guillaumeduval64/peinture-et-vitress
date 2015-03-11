@@ -1,0 +1,8 @@
+
+ <div style="float:left">
+<a href="{{ path('myapp_comptabilite_lister') }}">Tout</a> 
+{% for t in types %}
+    <a href="{{ path('myapp_comptabilite_voirEssence', { 'id': t.id }) }}" style="color: #47a3da;">{{ t.type | capitalize }}</a> 
+{% else %}
+{% endfor %}
+</div>

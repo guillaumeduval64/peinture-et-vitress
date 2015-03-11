@@ -1,12 +1,8 @@
-$(document).ready($(function() {
+jQuery(document).ready(function(){
     $( ".date").datepicker({
                         autoSize: true,
                         changeMonth: true,
                         changeYear: true,
-                    dateFormat: 'dd MM yy'
+                    dateFormat: 'dd-mm-yy'
                 });
-
-
-        $(".timepicker").timepicker();
-
-    }));
+    });

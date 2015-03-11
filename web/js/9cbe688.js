@@ -22051,63 +22051,60 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
 
 }(jQuery);
 
-$(document).ready($(function() {
+jQuery(document).ready(function(){
     $( ".date").datepicker({
                         autoSize: true,
                         changeMonth: true,
                         changeYear: true,
-                    dateFormat: 'dd MM yy'
+                    dateFormat: 'dd-mm-yy'
                 });
-
-
-        $(".timepicker").timepicker();
-
-    }));
+    });
 
 $(document).ready(function() {
 var test;
-
 var items = document.getElementsByClassName('currentMatch');
-var nbProductionObj = items.getAttribute("data-nbProductionObj"); 
-alert(nbProductionObj);
 
     for (var i = 0; i < items.length; i++){
+
         test = items[i].innerText;
     var array=[];
     array.push(test);
-alert(array);
-if (test > 32) {
+
+if (test > 3) {
 	newColor = '#E9E581';
 
 } else {
-    newColor = "black";
+    newColor = "blue";
     
 }
-items[i].style.color = newColor;;
-alert(items[i].style.color);
+items[i].style.color = newColor;
 }
+        console.log(items);
 
 });
 
+//couleurs pour estimations
+
 
 $(document).ready(function() {
 var test;
-var items = document.getElementsByClassName('currentMatch');
+var items = document.getElementsByClassName('currentMatchEstimation');
 
     for (var i = 0; i < items.length; i++){
+
         test = items[i].innerText;
     var array=[];
     array.push(test);
-alert(array);
-if (test > 32) {
-	newColor = '#E9E581';
+
+if (test > 3) {
+    newColor = '#E9E581';
 
 } else {
-    newColor = "black";
+    newColor = "blue";
     
 }
-items[i].style.color = newColor;;
-alert(items[i].style.color);
+items[i].style.color = newColor;
 }
+        console.log(items);
 
 });

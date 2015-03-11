@@ -17,15 +17,11 @@
 {{ form_errors(form) }}
           <!-- Text input-->
           <div class="form-group">
-            <label class="col-sm-2 control-label" for="textinput">Flag:</label>
-            <div class="col-sm-10">
+            <label class="col-sm-1 control-label" for="textinput">Flag:</label>
+            <div class="col-sm-1">
             {{ form_row(form.flag) }}
             </div>
-          </div>
 
-          
-          <div class="form-group">
-            <label class="col-sm-2 control-label" for="textinput"></label>
             <div class="col-sm-10">
             {{ form_widget(form.titles) }}
             </div>
@@ -35,16 +31,16 @@
 
 
           <div class="form-group">
-            <label class="col-sm-4 control-label" for="textinput">Etat:</label>
-            <div class="col-sm-2">
+            <label class="col-sm-1 control-label" for="textinput">Etat:</label>
+            <div class="col-sm-3">
               {{ form_widget(form.etat) }}
             </div>
 
-            <label class="col-sm-4 control-label" for="textinput">Ancien:</label>
+            <label class="col-sm-2 control-label" for="textinput">Ancien:</label>
             <div class="col-sm-2">
              {{ form_widget(form.ancien) }}
             </div>
-             <label class="col-sm-4 control-label" for="textinput">Service:</label>
+             <label class="col-sm-2 control-label" for="textinput">Service:</label>
             <div class="col-sm-2">
               {{ form_widget(form.service) }}
             </div>
@@ -52,20 +48,20 @@
 
 
           <div class="form-group">
-            <label class="col-sm-2 control-label" for="textinput">State</label>
+            <label class="col-sm-1 control-label" for="textinput">Nom</label>
             <div class="col-sm-4">
                 {{ form_row(form.nom, { 'attr': {'class':'form-control'} }) }}
             </div>
 
-            <label class="col-sm-2 control-label" for="textinput">Postcode</label>
+            <label class="col-sm-2 control-label" for="textinput">Prenom</label>
             <div class="col-sm-4">
             {{ form_row(form.prenom, { 'attr': {'class':'form-control'} }) }}
              </div>
           </div>
 
           <div class="form-group">
-            <label class="col-sm-2 control-label" for="textinput">Email:</label>
-            <div class="col-sm-10">
+            <label class="col-sm-1 control-label" for="textinput">Email:</label>
+            <div class="col-sm-5">
             {{ form_row(form.email, { 'attr': {class:'form-control'} }) }}
             </div>
           </div>
@@ -74,34 +70,37 @@
 
 
           <div class="form-group">
-            <label class="col-sm-4 control-label" for="textinput">Numero:</label>
+            <label class="col-sm-1 control-label" for="textinput">Numero:</label>
             <div class="col-sm-2">
               {{ form_widget(form.number, { 'attr': {class:'form-control'} }) }}
             </div>
 
-            <label class="col-sm-4 control-label" for="textinput">Rue:</label>
-            <div class="col-sm-2">
+            <label class="col-sm-1 control-label" for="textinput">Rue:</label>
+            <div class="col-sm-4">
              {{ form_widget(form.street, { 'attr': {class:'form-control'} }) }}
             </div>
-             <label class="col-sm-4 control-label" for="textinput">Ville:</label>
+             <label class="col-sm-1 control-label" for="textinput">Ville:</label>
             <div class="col-sm-2">
               {{ form_widget(form.city, { 'attr': {class:'form-control'} }) }}
             </div>
           </div>
 
           <div class="form-group">
-            <label class="col-sm-4 control-label" for="textinput">Etat:</label>
+            <label class="col-sm-4 control-label" for="textinput">Pc:</label>
             <div class="col-sm-2">
               {{ form_widget(form.pc, { 'attr': {class:'form-control'} }) }}
             </div>
 
-            <label class="col-sm-4 control-label" for="textinput">DAte:</label>
+            <label class="col-sm-4 control-label" for="textinput">Date:</label>
             <div class="col-sm-2">
               {{ form_widget(form.date, { 'attr': {'class':'input-medium date'} }) }}
             </div>
+            <label class="col-sm-4 control-label" style="margin-left:35px;" for="textinput">Heure:</label>
+            <div class="col-sm-2">
+              {{ form_widget(form.heure, { 'attr': {'class':'input-small timepicker'} }) }}
+            </div>
           </div>
 
-{{ form_widget(form.heure, { 'attr': {'class':'input-small timepicker'} }) }}
 
     <h3>Phones:</h3>
     <ul class="phones" data-prototype="{{ form_widget(form.phones.vars.prototype)|e }}">

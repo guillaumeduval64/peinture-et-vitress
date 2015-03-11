@@ -6,7 +6,7 @@
         <li><a href="{{ path('myapp_contrat_lister') }}">Contrat</a></li>
   </ul>
   <div class="tab-content">
-<table>
+ <table class="table table-hover">
 <tr>
 {# sorting of properties based on query components #}
     <th>{{ knp_pagination_sortable(pagination, 'N.', 'c.numero')|raw }}</th>

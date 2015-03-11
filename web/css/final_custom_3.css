@@ -1,0 +1,9 @@
+.nom{
+    display:inline-block;
+}
+.labelForm{
+    width: 62px;
+    clear: left;
+    text-align: right;
+    padding-right: 10px;
+}

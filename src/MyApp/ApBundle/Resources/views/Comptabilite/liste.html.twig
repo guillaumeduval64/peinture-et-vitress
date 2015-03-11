@@ -1,5 +1,5 @@
 <div class="billRight"> 
-    <table>
+ <table class="table table-hover">
         <tr>
 {# sorting of properties based on query components #}
             <th>{{ knp_pagination_sortable(pagination, 'Date', 'c.created')|raw }}</th>
@@ -29,9 +29,10 @@
 </div>
 
 <!-- Modal Comptabilite -->
-    <h3 id="">Ajout d'une facture:</h3>
+    
      
-    <div class="" style="float:left;">
+    <div class="" style="float:left; padding-left: 20px;">
+    <h3 id="">Ajout d'une facture:</h3>
         <form action="{{ path('myapp_comptabilite_ajouter') }}" method="post" {{ form_enctype(form) }}>
     <table>           
         <tr>
@@ -96,4 +97,6 @@
                                 </form>
 
     </div>
+
+
 </div>

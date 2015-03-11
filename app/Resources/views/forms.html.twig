@@ -59,7 +59,7 @@
 {% block radio_widget -%}
 
 
- <label class="radio">
+ <label class="radio" style="float:left; margin-left:5px;">
 
     <input type="radio" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} class="radio1" name="houseType" data-toggle="radioo"  />
    {{ label }}
@@ -69,7 +69,7 @@
 
 {% block collection_widget -%}
     {% if prototype is defined %}
-<table id="parcelTable" class="table table-bordered table-striped table-hover">
+<table class="table table-bordered table-striped table-hover">
                                   <thead>
                                     <tr>
                                         <th><center>Type de fenêtre</center></th>
@@ -99,7 +99,6 @@
                                         </span></td>
                                         <td>
    {{ form_row(form.nombre, {'attr': {'class': 'form-control spinner'}}) }}
-<a href="#" class="">Supprimer</a>
                                         </td>
                                         <td>
                                               {{ form_row(form.description, {'attr': {'class': 'form-control'}}) }}

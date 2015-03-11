@@ -23,17 +23,17 @@ class Devis
     private $nom;
     
      /**
-     * @ORM\Column(type="string",length=255)
+     * @ORM\Column(type="string",length=255, nullable=true)
      */    
     private $prenom;
     
     /**
-     * @ORM\Column(type="string",length=255)
+     * @ORM\Column(type="string",length=255, nullable=true)
      */    
     private $cellulaire;
 
     /**
-     * @ORM\Column(type="string",length=255)
+     * @ORM\Column(type="string",length=255, nullable=true)
      */    
     private $email;
 
@@ -41,6 +41,12 @@ class Devis
      * @ORM\Column(type="string",length=255, nullable=true)
      */    
     private $houseType;
+
+
+    /**
+     * @ORM\Column(type="string",length=255, nullable=true)
+     */    
+    private $intExt;
 
     /**
      * @ORM\Column(type="string",length=255, nullable=true)
@@ -382,5 +388,28 @@ class Devis
     public function getPrix()
     {
         return $this->prix;
+    }
+
+    /**
+     * Set intExt
+     *
+     * @param string $intExt
+     * @return Devis
+     */
+    public function setIntExt($intExt)
+    {
+        $this->intExt = $intExt;
+    
+        return $this;
+    }
+
+    /**
+     * Get intExt
+     *
+     * @return string 
+     */
+    public function getIntExt()
+    {
+        return $this->intExt;
     }
 }

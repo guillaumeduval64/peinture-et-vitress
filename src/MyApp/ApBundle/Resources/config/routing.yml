@@ -139,7 +139,7 @@ myapp_service_ajouter:
 myapp_service_supprimerService:
     pattern:  //admin/{idd}/{id}/services/supprimer
     defaults: { _controller: MyAppApBundle:Client:supprimerService }
-    
+
 myapp_estimation_voirClient:
     pattern:  /admin/{id}/estimation
     defaults: { _controller: MyAppApBundle:Estimation:voirClient }

@@ -3,7 +3,7 @@
 {% include 'MyAppApBundle:Rdv:menu.html.twig' with {'rien' : 'rien'} %}
 
   <div class="tab-content">
-    <table>
+ <table class="table table-hover">
 <tr>
     <th>{{ knp_pagination_sortable(pagination, 'Date', 'a.date')|raw }}</th>
     <th>{{ knp_pagination_sortable(pagination, 'Nom', 'a.nom')|raw }}</th>

@@ -5,26 +5,26 @@
 
 
         {% stylesheets filter='cssrewrite' output='css/back.css'
-            '@MyAppApBundle/Resources/public/css/modern.css'
-            '@MyAppApBundle/Resources/public/css/jquery-ui-1.10.1.css'
-            '@MyAppApBundle/Resources/public/css/jquery.ui.timepicker.css'
-            '@MyAppApBundle/Resources/public/css/menu/normalize.css'
-            '@MyAppApBundle/Resources/public/css/menu/demo.css'
-            '@MyAppApBundle/Resources/public/css/menu/icons.css'
-            '@MyAppApBundle/Resources/public/css/menu/component.css'
-            '@MyAppApBundle/Resources/public/css/menu/componentt.css'
-            '@MyAppApBundle/Resources/public/bootstrap-3.2.0/css/bootstrap.css'
-            '@MyAppApBundle/Resources/public/css/menu/default.css'
+            'bundles/myappap/css/modern.css'
+            'bundles/myappap/css/jquery-ui-1.10.1.css'
+            'bundles/myappap/css/jquery.ui.timepicker.css'
+            'bundles/myappap/css/menu/normalize.css'
+            'bundles/myappap/css/menu/demo.css'
+            'bundles/myappap/css/menu/icons.css'
+            'bundles/myappap/css/menu/component.css'
+            'bundles/myappap/css/menu/componentt.css'
+            'bundles/myappap/bootstrap-3.2.0/css/bootstrap.css'
+            'bundles/myappap/css/menu/default.css'
+            'bundles/myappap/css/sweet-alert.css'
+            'bundles/myappap/css/nv.d3.css'
 
 
         %}
         <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
         {% endstylesheets %}
 
-<link rel="stylesheet" href="{{ asset('bundles/myappap/css/menu/default.css') }}" type="text/css" media="all" />
 <link rel="shortcut icon" href="../favicon.ico">
-        
-
+      
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 
 {% javascripts
@@ -39,7 +39,8 @@
     '@MyAppApBundle/Resources/public/js/chart/Chart.js'
     '@MyAppApBundle/Resources/public/bootstrap-3.2.0/js/bootstrap.js'
     '@MyAppApBundle/Resources/public/js/date.js'
-    '@MyAppApBundle/Resources/public/js/couleurs-stats.js'
+    '@MyAppApBundle/Resources/public/js/sweet-alert.js'
+    output='js/compiled/main.js'
  %}
     <script src="{{ asset_url }}"></script>
   
@@ -56,11 +57,6 @@
 
             function init() {
 $('#comptabilite_montant').number( true, 2 );
-
-
-
-
-
 
 
 
@@ -111,9 +107,28 @@ var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
 
 {% endjavascripts %}
             <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54321500-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+ 
+
+
     </head>
     <body>
     <title>Intranet</title>
+
+
 <div class="container">
             <!-- Push Wrapper -->
 
@@ -127,7 +142,7 @@ var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
                            <span>{% block next %}{% endblock %}</span>
                         </div>
                         <div>
-                            <div id="choisir_langue" style="padding-right: 100px; float: right; padding-top: 5px;">
+                            <div id="choisir_langue" style="padding-right: 200px; float: right; padding-top: 5px;">
                                    {% for locale in ['en', 'fr'] %}
                 <span><li {% if locale == app.request.locale %}class="active"{% endif %}>
                     <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : locale})) }}"><h5 class="fg-color-blue">{{ locale|capitalize }}</h5></a>
@@ -145,20 +160,20 @@ var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
                         </header>
             <header class="clearfix">
                 <nav>
-                    <a href="{{ path('myapp_front_index') }}" class="bp-icon bp-icon-prev" data-info="Index"><span>Index</span></a>
-                    <a href="{{ path('myapp_client_lister') }}" class="bp-icon bp-icon-next" data-info="Client"><span>Client</span></a>
-                    <a href="{{ path('myapp_rdv_lister') }}" class="bp-icon bp-icon-drop" data-info="RDV"><span>RDV</span></a>
-                    <a href="{{ path('myapp_contrat_lister') }}" class="bp-icon bp-icon-archive" data-info="Contrat"><span>Contrat</span></a>
-                    <a href="{{ path('myapp_production_booke') }}" class="bp-icon bp-icon-prev" data-info="Production"><span>Production</span></a>
-                    <a href="{{ path('myapp_comptabilite_lister') }}" class="bp-icon bp-icon-prev" data-info="Comptabilité"><span>Comptabilité</span></a>
-                    <a href="{{ path('myapp_map_voir') }}" class="bp-icon bp-icon-prev" data-info="Map"><span>Map</span></a>
-                    <a href="{{ path('myapp_message_liste') }}" class="bp-icon bp-icon-prev" data-info="Message"><span>Message</span></a>
+                    <a href="{{ path('myapp_front_index') }}" class="bp-icon bp-icon-home" data-info="Index"><span>Index</span></a>
+                    <a href="{{ path('myapp_client_lister') }}" class="bp-icon bp-icon-client" data-info="Client"><span>Client</span></a>
+                    <a href="{{ path('myapp_rdv_lister') }}" class="bp-icon bp-icon-rdv" data-info="RDV"><span>RDV</span></a>
+                    <a href="{{ path('myapp_contrat_lister') }}" class="bp-icon bp-icon-contrat" data-info="Contrat"><span>Contrat</span></a>
+                    <a href="{{ path('myapp_production_booke') }}" class="bp-icon bp-icon-prod" data-info="Production"><span>Production</span></a>
+                    <a href="{{ path('myapp_comptabilite_lister') }}" class="bp-icon bp-icon-compta" data-info="Comptabilité"><span>Comptabilité</span></a>
+                    <a href="{{ path('myapp_map_voir') }}" class="bp-icon bp-icon-map" data-info="Map"><span>Map</span></a>
+                    <a href="{{ path('myapp_message_liste') }}" class="bp-icon bp-icon-message" data-info="Message"><span>Message</span></a>
                 </nav>
             </header>   
 
 
 
-            <div class="main">
+            <div class="main" style="overflow: hidden;">
                 <div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-list">
                     <div class="cbp-vm-options">
 
@@ -241,9 +256,6 @@ var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
         </div>
         </div>
 
-
-
-
-
+</span></span></div></div></div></div></div>
     </body>
-</html>
+   </html>

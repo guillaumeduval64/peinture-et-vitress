@@ -154,7 +154,7 @@ class NumberFormatter
     private $attributes = array(
         self::FRACTION_DIGITS => 0,
         self::GROUPING_USED   => 1,
-        self::ROUNDING_MODE   => self::ROUND_HALFEVEN
+        self::ROUNDING_MODE   => self::ROUND_HALFEVEN,
     );
 
     /**
@@ -171,7 +171,7 @@ class NumberFormatter
      */
     private static $supportedStyles = array(
         'CURRENCY' => self::CURRENCY,
-        'DECIMAL'  => self::DECIMAL
+        'DECIMAL'  => self::DECIMAL,
     );
 
     /**
@@ -182,7 +182,7 @@ class NumberFormatter
     private static $supportedAttributes = array(
         'FRACTION_DIGITS' => self::FRACTION_DIGITS,
         'GROUPING_USED'   => self::GROUPING_USED,
-        'ROUNDING_MODE'   => self::ROUNDING_MODE
+        'ROUNDING_MODE'   => self::ROUNDING_MODE,
     );
 
     /**
@@ -195,7 +195,7 @@ class NumberFormatter
     private static $roundingModes = array(
         'ROUND_HALFEVEN' => self::ROUND_HALFEVEN,
         'ROUND_HALFDOWN' => self::ROUND_HALFDOWN,
-        'ROUND_HALFUP'   => self::ROUND_HALFUP
+        'ROUND_HALFUP'   => self::ROUND_HALFUP,
     );
 
     /**
@@ -209,7 +209,7 @@ class NumberFormatter
     private static $phpRoundingMap = array(
         self::ROUND_HALFDOWN => \PHP_ROUND_HALF_DOWN,
         self::ROUND_HALFEVEN => \PHP_ROUND_HALF_EVEN,
-        self::ROUND_HALFUP   => \PHP_ROUND_HALF_UP
+        self::ROUND_HALFUP   => \PHP_ROUND_HALF_UP,
     );
 
     /**
@@ -219,7 +219,7 @@ class NumberFormatter
      */
     private static $int32Range = array(
         'positive' => 2147483647,
-        'negative' => -2147483648
+        'negative' => -2147483648,
     );
 
     /**
@@ -229,7 +229,7 @@ class NumberFormatter
      */
     private static $int64Range = array(
         'positive' => 9223372036854775807,
-        'negative' => -9223372036854775808
+        'negative' => -9223372036854775808,
     );
 
     private static $enSymbols = array(
@@ -505,7 +505,7 @@ class NumberFormatter
      * Parse a number
      *
      * @param string $value    The value to parse
-     * @param string $type     Type of the formatting, one of the format type constants. NumberFormatter::TYPE_DOUBLE by default
+     * @param int    $type     Type of the formatting, one of the format type constants. NumberFormatter::TYPE_DOUBLE by default
      * @param int    $position Offset to begin the parsing on return this value will hold the offset at which the parsing ended
      *
      * @return bool|string                                  The parsed value of false on error

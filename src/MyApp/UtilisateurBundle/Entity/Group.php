@@ -35,7 +35,7 @@ class Group extends BaseGroup
      * @param \MyApp\UtilisateurBundle\Entity\Group $utilisateur
      * @return Group
      */
-    public function setUtilisateur(\MyApp\UtilisateurBundle\Entity\Groups $utilisateur = null)
+    public function setUtilisateur(\MyApp\UtilisateurBundle\Entity\Group $utilisateur = null)
     {
         $this->utilisateur = $utilisateur;
     

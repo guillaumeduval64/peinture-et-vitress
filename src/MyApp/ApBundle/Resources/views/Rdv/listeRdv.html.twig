@@ -3,7 +3,7 @@
 {% include 'MyAppApBundle:Rdv:menu.html.twig' with {'rdv' : 'rdv'} %}
 
   <div class="tab-content">
-    <table>
+     <table class="table table-hover">
 <tr>
 {# sorting of properties based on query components #}
      <th>{{ knp_pagination_sortable(pagination, 'Date', 'a.date')|raw }}</th>

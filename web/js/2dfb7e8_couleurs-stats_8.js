@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    window.onerror = function(msg, url, line)
+{
 var test;
 
 var items = document.getElementsByClassName('currentMatch');
@@ -21,6 +23,7 @@ items[i].style.color = newColor;;
 alert(items[i].style.color);
 }
 
+}
 });
 
 

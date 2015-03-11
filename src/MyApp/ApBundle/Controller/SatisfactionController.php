@@ -105,7 +105,7 @@ public function equipeAction($id)
         $request = $this->container->get('request');
         if ($request->getMethod() == 'POST') 
         {
-            $form-bind($request);
+            $form->bind($request);
                     
             if ($form->isValid()) 
                 {       

@@ -6,6 +6,9 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'kartik\\plugins\\rating\\' => array($vendorDir . '/kartik-v/bootstrap-star-rating'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
-    'Ivory\\JsonBuilder\\' => array($vendorDir . '/egeloen/json-builder'),
+    'Ivory\\JsonBuilder\\' => array($vendorDir . '/egeloen/json-builder/src'),
+    'Ivory\\GoogleMap\\' => array($vendorDir . '/egeloen/google-map/src'),
+    'Ivory\\GoogleMapBundle\\' => array($vendorDir . '/egeloen/google-map-bundle'),
 );

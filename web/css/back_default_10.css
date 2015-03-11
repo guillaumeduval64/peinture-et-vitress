@@ -1,15 +1,5 @@
 /* General Blueprint Style */
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
-@font-face {
-	font-family: 'bpicons';
-	src:url('../Resources/public/css/fonts/bpicons/bpicons.eot');
-	src:url('../Resources/public/css/fonts/bpicons/bpicons.eot?#iefix') format('embedded-opentype'),
-		url('../Resources/public/css/fonts/bpicons/bpicons.woff') format('woff'),
-		url('../Resources/public/css/fonts/bpicons/bpicons.ttf') format('truetype'),
-		url('../Resources/public/css/fonts/bpicons/bpicons.svg#bpicons') format('svg');
-	font-weight: normal;
-	font-style: normal;
-} /* Made with http://icomoon.io/ */
 
 *, *:after, *:before { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 body, html { font-size: 100%; padding: 0; margin: 0;}
@@ -130,7 +120,6 @@ a:hover {
 }
 
 .bp-icon:after {
-	font-family: 'bpicons';
 	speak: none;
 	font-style: normal;
 	font-weight: normal;
@@ -156,19 +145,38 @@ a:hover {
 }
 
 .bp-icon-next:after {
-	content: "\e000";
+	content: url(../bundles/myappap/images/barcode.png);
+	padding-top: 3px;
 }
 .bp-icon-drop:after {
-	content: "\e001";
-}
-.bp-icon-archive:after {
-	content: "\e002";
+	content: url(../bundles/myappap/images/add.png);
 }
 .bp-icon-about:after {
-	content: "\e003";
+	content: url(../bundles/myappap/images/add.png);
 }
-.bp-icon-prev:after {
-	content: url(../Resources/public/css/menu/add.png);
+.bp-icon-map:after {
+	content: url(../bundles/myappap/images/map-marker-2x.png);
+}
+.bp-icon-compta:after {
+	content: url(../bundles/myappap/images/book-2x.png);
+}
+.bp-icon-message:after {
+	content: url(../bundles/myappap/images/comment-square-2x.png);
+}
+.bp-icon-prod:after {
+	content: url(../bundles/myappap/images/media-play-2x.png);
+}
+.bp-icon-contrat:after {
+	content: url(../bundles/myappap/images/align-left-2x.png);
+}
+.bp-icon-home:after {
+	content: url(../bundles/myappap/images/home-2x.png);
+}
+.bp-icon-client:after {
+	content: url(../bundles/myappap/images/people-2x.png);
+}
+.bp-icon-rdv:after {
+	content: url(../bundles/myappap/images/target-2x.png);
 }
 
 @media screen and (max-width: 55em) {

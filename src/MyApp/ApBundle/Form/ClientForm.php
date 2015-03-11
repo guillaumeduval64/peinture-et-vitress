@@ -48,12 +48,13 @@ class ClientForm extends AbstractType
                 ))
             ->add('date','date', array(
                     'widget' => 'single_text',
-                    'format' => 'dd MMM yyyy',
+                    'format' => 'dd-MM-yyyy',
                     'required' => false,
                     'label' => 'Date: '))
             ->add('heure', 'time', array(
                 'widget' => 'single_text',
-                'label' => 'Prev. h fin: '
+                'label' => 'Prev. h fin: ',
+                'required' => false,
                 ));
         
             $builder->add('city', 'entity', array(

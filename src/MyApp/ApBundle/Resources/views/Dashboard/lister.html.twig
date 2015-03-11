@@ -10,3 +10,13 @@
 {% render "MyAppApBundle:Dashboard:produitUtilisateurSemaine" %}
 {% endblock %}
 
+
+{% javascripts
+    '@MyAppApBundle/Resources/public/js/d3.js'
+    output='js/compiled/main.js'
+ %}
+    <script src="{{ asset_url }}"></script>
+
+
+
+{% endjavascripts %}

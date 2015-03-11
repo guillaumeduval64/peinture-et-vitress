@@ -1,5 +1,12 @@
 # CHANGELOG
 
+### 1.0.3 (2014-11-08)
+
+ * 1ad3abb - [Gitignore] Remove Composer installer and phar
+ * 7a58072 - Migrate to PSR-4
+ * b98e8a6 - [README] Rely on relative link
+ * 3bf9f1d - Add contributing doc
+
 ### 1.0.2 (2014-08-12)
 
  * 3a54d10 - [Travis] Improve build matrix

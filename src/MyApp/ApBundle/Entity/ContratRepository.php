@@ -31,6 +31,21 @@ public function getAllProductionsFranchiseCount($user)
                   ->getResult();
   }
 
+    public function getLastContrat($user)
+    {
+        $sql = "
+        SELECT  numero
+
+          FROM Contrat
+          ORDER BY numero DESC
+LIMIT 1;
+    ";
+
+        $stmt = $this->getEntityManager()->getConnection()->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
 public function getAllProductionsFranchiseCountWeek($user)
   {
     $qb = $this->createQueryBuilder('a')

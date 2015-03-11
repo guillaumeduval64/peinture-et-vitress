@@ -15,8 +15,10 @@
         {% endif %}
         <p><b>Id Production: </b>
         {% if comptabilite.production != NULL %}
-               {{ comptabilite.production.id }}</p>
-            {% else %}
+   
+               <a href="{{ path('myapp_production_modifier', { 'id': comptabilite.production.id }) }}"> {{ comptabilite.production.id }}</a>
+                          </p>
+            {% else %}</a>
             N/A
         {% endif %}
 

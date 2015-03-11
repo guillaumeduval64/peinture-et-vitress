@@ -29,9 +29,18 @@ class DevisType extends AbstractType
                     'multiple' => false,
                     'empty_data'  => null
                     ))
-            ->add('houseTypeFloors')
-            ->add('basement')
-            ->add('houseTypeFloorsAppart')
+            ->add('intExt', 'choice', array(
+                    'choices' => array(
+                        'IntExt' => 'Intérieur et extérieur',
+                        'Interieur' => 'Intérieur',
+                        'Exterieur' => 'Extérieur',
+                    ),
+                    'required'    => true,
+                    'expanded' => true,
+                    'multiple' => false,
+                    'empty_data'  => null,
+                    'label' => false
+                    ))
             ->add('fenetres', 'collection', array('type'         => new FenetreType(),
                         'allow_add'    => true,
                         'allow_delete' => true,
