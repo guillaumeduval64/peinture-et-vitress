@@ -1,6 +1,9 @@
 {% extends 'MyAppApBundle::layout.html.twig' %}
 {% block title %}
-    Fiche client: {{ client.nom|upper }} {{ client.prenom|capitalize }}
+    {{ client.nom|upper }} {{ client.prenom|capitalize }}
+    <button  class="badge badge-info" data-toggle="modal" data-target="#myModalNote">Notes {{ notes|length }}</button>
+    <a class="badge badge-info" href="{{ path('myapp_client_modifier', { 'id': client.id }) }}">Modifier Profil</a>
+
 {% endblock %}
 {% block previous %}
 <a href="{{ path('myapp_estimation_suivant', { 'id': client.id, 'client': client, 'param':'Prev' }) }}"> Précèdent</a>
@@ -37,11 +40,12 @@
                     </strong></h2> 
                         </span>
                         <span >
-                           <span style="font-size:10px;padding-left:15px; float:right;">  Service demandés: {{ client.service.type|capitalize }}     <br>    </span> 
 
 
 
-   <span style="font-size:10px; float:right;"> Créé par: {{ client.user|capitalize }} le {{ client.dateTable.date|date('d M y') }}</span>
+
+   <span style="font-size:13px; padding-top:4px; float:right;"> Créé par: {{ client.user|capitalize }} le {{ client.dateTable.date|date('d M y') }}</span>
+                             <span style="font-size:17px;padding-right:15px; float:right;">  Service demandés: {{ client.service.type|capitalize }}       </span>
                         </span>
 {% endblock %}
 
@@ -55,9 +59,10 @@
          <div class="">
             <div class="" id="main">
                 <div class="col-xs-12 col-sm-8">
-                    <p><strong>Adresse: </strong> {{ client.number }} {{ client.street }} </p><br>
-                    <p>{{ client.city.city|capitalize }}, {{ client.pc|upper }}</p>
-                    <p><strong>Mail: </strong><a href="mailto:{{ client.email }}">{{ client.email }}</a> </p>
+                    <p style="padding-top:10px; "><strong>Adresse: </strong> {{ client.number }} {{ client.street }}, {{ client.city.city|capitalize }}, {{ client.pc|upper }} </p>
+                    {% if client.email != null %}
+                        <p><strong>Mail: </strong><a href="mailto:{{ client.email }}">{{ client.email }}</a></p>
+                    {%  endif %}
                     <p><strong>Téléphone: </strong>
                     {% for p in client.phones %}
     {{ p.phoneType.phoneType|capitalize }}: {{ p.phone }}
@@ -69,14 +74,11 @@
                        
                     </p>
                     <p><strong>Services done: </strong>
-                        <span class="tags">lavage de vitres</span> 
-                        <span class="tags">peinture</span>
+                        <span class="tags">Ajouter</span>
                     </p>
                     <br>
-<button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalNote">Notes({{ notes|length }}) </button>
 <br>
 <br>
-<a class="btn btn-info btn-block" href="{{ path('myapp_client_modifier', { 'id': client.id }) }}"> <span class="fa fa-user"></span>Modifier Profil</a>
 
                 </div>             
              
@@ -94,7 +96,7 @@
             </tr>
             <tr>
                 <td>
-                    
+
                         <figcaption class="ratings">
                             <p>Ratings
                             <a href="#">
@@ -144,7 +146,7 @@
       <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModall" style="float:right;">Ajouter Service</button>
     </div>
 
-    <div id="collapseOne" class="panel-collapse collapse">
+    <div id="collapseOne" class="panel-collapse">
       <div class="panel-body">
     {% if clientServices %}
 
@@ -188,7 +190,7 @@
       </h4>
        <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal" style="float:right;">Ajouter Contrat</button>
     </div>
-    <div id="collapseThree" class="panel-collapse collapse">
+    <div id="collapseThree" class="panel-collapse">
       <div class="panel-body">
        {% if clientservicestest %}
 
@@ -204,9 +206,9 @@
 </tr>
                         {% for co in clientservicestest %}
         <tr>
-            <td><span class="dateSpan">{{ co.created|date('d/m/y') }}:</b></span></td>
+            <td><span class="dateSpan">{{ co.created|date('d/m/y') }}:</span></td>
             <td><a href="{{ path('myapp_contrat_voir', { 'id': co.id }) }}">{{ co.numero }}</a></td>
-            <td>{{ co.service }}</td>
+            <td>{{ co.service }} <a href="{{ path('myapp_production_modifier', { 'id': co.id }) }}" style="padding-left:10px;"><image src="{{ asset('bundles/myappap/images/wrench.png') }}"/></a></td>
             <td>{{ co.prix }}$</td>
 
 
@@ -249,7 +251,6 @@
 
 <!-- Modal -->
 <div class="modal fade" id="myModalNote" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-         <div id="note">
 
 
 <div class="loading"></div>

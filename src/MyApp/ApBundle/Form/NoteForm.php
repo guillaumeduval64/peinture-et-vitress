@@ -9,7 +9,9 @@ class NoteForm extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {     
-            $builder->add('note', 'textarea',array('attr' => array('rows' => '4', 'cols' =>'40' )));
+            $builder->add('note', 'textarea',array('attr' => array('rows' => '4', 'cols' =>'40' )))
+            ->add('type','choice', array('choices' => array('Pap'=>'Pap','Appel'=>'Appel'),'label' => 'Type'));
+
     }
     public function getDefaultOptions(array $options)
     {

@@ -64,7 +64,7 @@ class Devis
     private $houseTypeFloorsAppart;
 
     /**
-    * @ORM\OneToMany(targetEntity="Fenetre", mappedBy="devis", cascade={"all"})
+     * @ORM\Column(type="integer",length=255, nullable=true)
     */
     private $fenetres;
 
@@ -282,7 +282,6 @@ class Devis
      */
     public function __construct()
     {
-                $this->fenetres = new \Doctrine\Common\Collections\ArrayCollection();
 
         $this->setCreated(new \DateTime());
         $this->setUpdated(new \DateTime());
@@ -335,39 +334,6 @@ class Devis
     }
 
     /**
-     * Add fenetres
-     *
-     * @param \FrontEnd\SuperBundle\Entity\Fenetre $fenetres
-     * @return Devis
-     */
-    public function addFenetre(\FrontEnd\SuperBundle\Entity\Fenetre $fenetres)
-    {
-        $this->fenetres[] = $fenetres;
-    
-        return $this;
-    }
-
-    /**
-     * Remove fenetres
-     *
-     * @param \FrontEnd\SuperBundle\Entity\Fenetre $fenetres
-     */
-    public function removeFenetre(\FrontEnd\SuperBundle\Entity\Fenetre $fenetres)
-    {
-        $this->fenetres->removeElement($fenetres);
-    }
-
-    /**
-     * Get fenetres
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getFenetres()
-    {
-        return $this->fenetres;
-    }
-
-    /**
      * Set prix
      *
      * @param string $prix
@@ -411,5 +377,28 @@ class Devis
     public function getIntExt()
     {
         return $this->intExt;
+    }
+
+    /**
+     * Set fenetres
+     *
+     * @param integer $fenetres
+     * @return Devis
+     */
+    public function setFenetres($fenetres)
+    {
+        $this->fenetres = $fenetres;
+    
+        return $this;
+    }
+
+    /**
+     * Get fenetres
+     *
+     * @return integer 
+     */
+    public function getFenetres()
+    {
+        return $this->fenetres;
     }
 }

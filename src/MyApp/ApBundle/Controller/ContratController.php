@@ -94,18 +94,21 @@ class ContratController extends ContainerAware
     $production= $em->getRepository('MyAppApBundle:Production')->findAll();
     $form = $this->container->get('form.factory')->create(new ContratRechercheForm());
         $user = $this->container->get('security.context')->getToken()->getUsername();
-        $dql = "SELECT c FROM MyAppApBundle:Contrat c JOIN c.client cl WHERE cl.user = :user AND c.contratEstimation = 'Contrat' ORDER BY c.id DESC";
+        $dql = "SELECT c FROM MyAppApBundle:Contrat c JOIN c.client cl
+WHERE cl.user = :user AND c.contratEstimation = 'Contrat' ORDER BY c.id DESC";
+        /*JOIN c.contrat_cleintservice cc JOIN cc.clientservice cs */
         $query = $em->createQuery($dql);
         $query -> setParameter('user', $user);
-    
-         $paginator = $this->container->get('knp_paginator');
+
+
+
+        $paginator = $this->container->get('knp_paginator');
         $pagination = $paginator->paginate(
             $query,
             $this->container->get('request')->query->get('page', 1)/*page number*/,
             15/*limit per page*/
                 );
         $pagination->setPageRange(7);
-        
 	return $this->container->get('templating')->renderResponse('MyAppApBundle:Contrat:lister.html.twig', 
 	array(
 	'pagination' => $pagination, 
@@ -153,7 +156,7 @@ class ContratController extends ContainerAware
     $em = $this->container->get('doctrine')->getEntityManager();
     $production= $em->getRepository('MyAppApBundle:Production')->findAll();
         $user = $this->container->get('security.context')->getToken()->getUsername();
-        $dql = "SELECT c FROM MyAppApBundle:Contrat c JOIN c.client cl WHERE cl.user = :user AND c.contratEstimation = 'Estimation' ORDER BY c.id DESC";
+        $dql = "SELECT c FROM MyAppApBundle:Contrat c JOIN c.client cl WHERE cl.user = :user AND c.contratEstimation = 'Estimation' AND cl.etat != 'Annulé' ORDER BY c.id DESC";
         $query = $em->createQuery($dql);
         $query -> setParameter('user', $user);
     

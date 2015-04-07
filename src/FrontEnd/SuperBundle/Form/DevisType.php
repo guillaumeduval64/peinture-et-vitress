@@ -41,10 +41,7 @@ class DevisType extends AbstractType
                     'empty_data'  => null,
                     'label' => false
                     ))
-            ->add('fenetres', 'collection', array('type'         => new FenetreType(),
-                        'allow_add'    => true,
-                        'allow_delete' => true,
-                        'label' => false ))
+            ->add('fenetres','text', array('label'=>'Nombre de fenêtre'))
 
         ;
     }

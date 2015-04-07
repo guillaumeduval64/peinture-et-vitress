@@ -23,7 +23,7 @@ class ClientForm extends AbstractType
             ->add('ancien', 'choice', array(
                 'choices' => array('0'=>'Nouveau','1'=>'Ancien'),
                 'label' => 'Client depuis? ',))
-            ->add('etat', 'choice', array('choices' => array('A recontacter'=>'A recontacter','Rappeler'=>'Rappeler','Rdv'=>'Rdv','Done'=>'Done','2nd service'=>'2nd service','2013'=>'2013','Annulé'=>'Annulé'),'label' => 'Etat: '))
+            ->add('etat', 'choice', array('choices' => array('A recontacter'=>'A recontacter','Rappeler'=>'Rappeler','Rdv'=>'Rdv','Done'=>'Done','2nd service'=>'2nd service','2016'=>'2016','Annulé'=>'Annulé','Déménagé'=>'Déménagé'),'label' => 'Etat: '))
             ->add('flag',null, array('label' => false))
             ->add('nom', null, array('label' => false))
             ->add('prenom','text',array(
@@ -77,7 +77,6 @@ class ClientForm extends AbstractType
             'required' => false,
             'label' => 'Service'
             )); 
-            
             }
     
     public function getName()

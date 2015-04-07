@@ -102,8 +102,7 @@ class ClientController extends ContainerAware
       
         $em = $this->container->get('doctrine')->getManager();
         $user = $this->container->get('security.context')->getToken()->getUsername();
-       
-        
+
         $formRecherche = $this->container->get('form.factory')->create(new ClientRechercheForm());
          $client = new Client();
         
@@ -298,7 +297,7 @@ foreach ($PhoneTypeExist as $phone) {
 
 
 
-    if ($phoneTypeBoom=="Cell") {
+    if ($phoneTypeBoom=="Cellllll") {
 $text ="c'est de la balle";
 
         $twilio = $this->container->get('myapp_ap.message');

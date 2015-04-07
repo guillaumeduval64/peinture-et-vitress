@@ -20,7 +20,7 @@
  */
 
 ;(function($) {
-    var image =  "{{ asset('bundles/myappap/images/star-off.png') }}";
+    var image =  "{{ asset('bundles/myappapbundle/images/star-off.png') }}";
   var methods = {
     init: function(settings) {
       return this.each(function() {
@@ -460,8 +460,8 @@
     size          : 16,
     space         : true,
     starHalf      : 'star-half.png',
-    starOff       : 'symfony/web/bundles/myappap/images/star-off.png',
-    starOn        : 'symfony/web/bundles/myappap/images/star-off.png',
+    starOff       : image,
+    starOn        : image,
     target        : undefined,
     targetFormat  : '{score}',
     targetKeep    : false,

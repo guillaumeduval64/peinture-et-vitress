@@ -1,8 +1,8 @@
 # This file is auto-generated during the composer install
 parameters:
     database_driver: pdo_mysql
-    database_host: localhost
-    database_port: null
+    database_host: 127.0.0.1
+    database_port: 8889
     database_name: peint493_ap
     database_user: root
     database_password: root
@@ -12,3 +12,4 @@ parameters:
     mailer_password: null
     locale: fr
     secret: ThisTokenIsNotSoSecretChangeIt
+    database_path: /Applications/MAMP/tmp/mysql/mysql.sock

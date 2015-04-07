@@ -5,6 +5,7 @@
     <th>{{ knp_pagination_sortable(pagination, 'Date', 'c.created') }}</th>
     <th>{{ knp_pagination_sortable(pagination, 'Rappel', 'c.date') }}</th>
     <th>{{ knp_pagination_sortable(pagination, "client.nom" | trans, 'c.nom') }}</th>
+    <th>Etat</th>
     <th>Service</th>
     <th>Total</th>
     <th>{{ knp_pagination_sortable(pagination, 'Ville', 'a.city') }}</th>
@@ -13,9 +14,10 @@
                             <tr {% if loop.index is odd %}class="color"{% endif %}>
                                 <td>{% if client.flag %}<img src="{{ asset('bundles/myappap/images/bookmark-2x.png') }}" title="Attention"/>{% endif %}</td>
                                 <td><span class="cbp-vm-title">{{ client.created|date('d/m/y') }}</span></td>
-                                <td>{% if client.date != null %}{{ client.date|date('d/m/y') }}{% endif %}</td>
+                                <td>{% if client.date != null %}<span class="cbp-vm-title">{{ client.date|date('d/m/y') }}</span>{% endif %}</td>
                                 <td><h4><a href="{{ path('myapp_estimation_voirClient', { 'id': client.id }) }}">{{ client.nom|capitalize }} {{ client.prenom|capitalize }}</a></h4></td>
-                                <td>{{ client.service.type|capitalize }}</td>
+                                <td><span>{{ client.etat|capitalize }}</span></td>
+                                <td><span>{{ client.service.type|capitalize }}</span></td>
                                 <td class="cbp-vm-price">$10</td>
                                 <td>{{ client.city.city }}</td>
                                 <td><a href="{{ path('myapp_client_modifier', { 'id': client.id }) }}"><img src="{{ asset('bundles/myappap/images/clipboard-2x.png') }}" title="Attention"/></a></td>

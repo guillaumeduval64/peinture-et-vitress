@@ -100,7 +100,7 @@ class Client
     
      /**
      * @ORM\OneToMany(targetEntity="Note", mappedBy="client", cascade={"persist","remove"})
-     */    
+     */
     private $note;
     
      /**

@@ -20,7 +20,7 @@ class Contrat
     public $id;
     
     /**
-     * @ORM\Column(type="string",length=255, unique=true)
+     * @ORM\Column(type="integer",length=255, unique=true)
      */    
     public $numero;
     
@@ -96,7 +96,7 @@ class Contrat
     /**
      * Set numero
      *
-     * @param string $numero
+     * @param integer $numero
      */
     public function setNumero($numero)
     {
@@ -106,7 +106,7 @@ class Contrat
     /**
      * Get numero
      *
-     * @return string 
+     * @return integer
      */
     public function getNumero()
     {

@@ -159,10 +159,10 @@ ivory_google_map:
         type: "roadmap"
 
         # Map width
-        width: "350px"
+        width: "300px"
 
         # Map height
-        height: "350px"
+        height: "300px"
 
         # Custom map options
         # By default, there is no map options

@@ -242,7 +242,7 @@
 <div class="form-group">
          <label class="col-sm-3 pull-left" style="display: inline;">Service:</label>
                         
-                           {{ form_widget(form.intExt, {'attr': {'class': 'from-group'}}) }}
+                           {{ form_widget(form.intExt, {'label_attr': {'class': 'foo'}}) }}
 
 
 </div>
@@ -408,25 +408,17 @@ function slowAlert() {
   $('.spinner').spinner({ min: 1 });
 }
 
-  
+
 
 
   // On récupère la balise <div> en question qui contient l'attribut « data-prototype » qui nous intéresse.
   var $container = $('div#frontend_superbundle_devis_fenetres');
-var $containerr = $('#ajout');
   // On ajoute un lien pour ajouter une nouvelle catégorie
   console.log($container);
-  var $lienAjout = $('<a href="#" onclick="activerRadio()" id="ajout_fenetre" class="">Ajouter des Fenêtres</a>');
-  $containerr.append($lienAjout);
+
 
   // On ajoute un nouveau champ à chaque clic sur le lien d'ajout.
-  $lienAjout.click(function(e) {
-    ajouterCategorie($container);
-    $('[type="radio"]').radio();
-    $('.spinner').spinner({ min: 1 });
-    e.preventDefault(); // évite qu'un # apparaisse dans l'URL
-    return false;
-  });
+
 
   // On définit un compteur unique pour nommer les champs qu'on va ajouter dynamiquement
   var index = $container.find(':input').length;
@@ -500,7 +492,7 @@ $(document).ready(function() {
 
               //if you want to print the error:
               $('#resultats_recherche').html(data);
-           
+
        });//It is silly. But you should not write 'json' or any thing as the fourth parameter. It should be undefined. I'll explain it futher down
 
       //we dont what the browser to submit the form
@@ -510,32 +502,7 @@ $(document).ready(function() {
 
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </script>
-
-
-
-
-
-
-
-
-
-
 
 	</body>
 </html>

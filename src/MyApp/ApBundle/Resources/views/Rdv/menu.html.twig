@@ -9,6 +9,7 @@
                 <li {% if rdv is defined %} class="active" {% endif %}><a href="{{ path('myapp_rdv_listerRdv') }}">RDV</a></li>
                 <li {% if done is defined %} class="active" {% endif %}><a href="{{ path('myapp_rdv_listerDone') }}">Done</a></li>
                 <li {% if seconde is defined %} class="active" {% endif %}><a href="{{ path('myapp_rdv_listerSeconde') }}">2nd Service</a></li>
-                <li {% if annee is defined %} class="active" {% endif %}><a href="{{ path('myapp_rdv_listerAnnee') }}">2013</a></li>
+                <li {% if annee is defined %} class="active" {% endif %}><a href="{{ path('myapp_rdv_listerAnnee') }}">2015</a></li>
+                <li {% if annule is defined %} class="active" {% endif %}><a href="{{ path('myapp_rdv_listerAnnule') }}">Annulé</a></li>
   </ul>
   </div>

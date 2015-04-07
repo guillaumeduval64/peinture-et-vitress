@@ -148,7 +148,36 @@ class RdvController extends ContainerAware
         'message' => '',
  	));
     }
-    
+
+
+    public function listerAnnuleAction()
+    {
+        $em = $this->container->get('doctrine')->getEntityManager();
+        $user = $this->container->get('security.context')->getToken()->getUsername();
+        $qb = $em->createQueryBuilder();
+        $qb->select('a')
+            ->from('MyAppApBundle:Client', 'a')
+            ->where('a.etat = :var')
+            ->andWhere('a.user = :user')
+            ->setParameters(array('var'=> 'Annulé',
+                'user'=> $user));
+
+
+        $paginator = $this->container->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $qb,
+            $this->container->get('request')->query->get('page', 1)/*page number*/,
+            15/*limit per page*/
+        );
+        $pagination->setPageRange(7);
+        return $this->container->get('templating')->renderResponse('MyAppApBundle:Rdv:listerAnnule.html.twig',
+            array(
+                'pagination' => $pagination,
+                'message' => '',
+            ));
+    }
+
+
     public function listerAnneeAction()
     {
 	$em = $this->container->get('doctrine')->getEntityManager();    
@@ -159,7 +188,7 @@ class RdvController extends ContainerAware
         ->from('MyAppApBundle:Client', 'a')
         ->where('a.etat = :var')      
         ->andWhere('a.user = :user')
-        ->setParameters(array('var'=> '2013',
+        ->setParameters(array('var'=> '2016',
                         'user'=> $user));
         
 

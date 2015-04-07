@@ -16,141 +16,120 @@
 
 
 
-  <div class="row">
+  <div class="row" style="width: 836px;">
     <div>
         <form action="" method="POST" {{ form_enctype(form) }} class="form-horizontal" role="form">
         <fieldset>
 
           <!-- Form Name -->
-          <legend>Ajouter un client:</legend>
-{{ form_errors(form) }}
-          <!-- Text input-->
-          <div class="form-group">
-            <label class="col-sm-2 control-label" for="textinput">Flag:</label>
-            <div class="col-sm-10">
-            {{ form_row(form.flag) }}
-            </div>
-          </div>
+          <legend>Modifier un client:</legend>
+            {{ form_errors(form) }}
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-sm-1 control-label" for="textinput">Flag:</label>
+                <div class="col-sm-1">
+                    {{ form_row(form.flag) }}
+                </div>
 
-          
-          <div class="form-group">
-            <label class="col-sm-2 control-label" for="textinput"></label>
-            <div class="col-sm-10">
-            {{ form_widget(form.titles) }}
-            </div>
-          </div>
-
-
-
-
-          <div class="form-group">
-            <label class="col-sm-4 control-label" for="textinput">Etat:</label>
-            <div class="col-sm-2">
-              {{ form_widget(form.etat) }}
-            </div>
-
-            <label class="col-sm-4 control-label" for="textinput">Ancien:</label>
-            <div class="col-sm-2">
-             {{ form_widget(form.ancien) }}
-            </div>
-             <label class="col-sm-4 control-label" for="textinput">Service:</label>
-            <div class="col-sm-2">
-              {{ form_widget(form.service) }}
-            </div>
-          </div>
-
-
-          <div class="form-group">
-            <label class="col-sm-2 control-label" for="textinput">Nom</label>
-            <div class="col-sm-4">
-                {{ form_row(form.nom, { 'attr': {'class':'form-control'} }) }}
-            </div>
-
-            <label class="col-sm-2 control-label" for="textinput">Prenom</label>
-            <div class="col-sm-4">
-            {{ form_row(form.prenom, { 'attr': {'class':'form-control'} }) }}
-             </div>
-          </div>
-
-          <div class="form-group">
-            <label class="col-sm-2 control-label" for="textinput">Email:</label>
-            <div class="col-sm-10">
-            {{ form_row(form.email, { 'attr': {class:'form-control'} }) }}
-            </div>
-          </div>
-
-
-
-
-          <div class="form-group">
-            <label class="col-sm-4 control-label" for="textinput">Numero:</label>
-            <div class="col-sm-2">
-              {{ form_widget(form.number, { 'attr': {class:'form-control'} }) }}
-            </div>
-
-            <label class="col-sm-4 control-label" for="textinput">Rue:</label>
-            <div class="col-sm-2">
-             {{ form_widget(form.street, { 'attr': {class:'form-control'} }) }}
-            </div>
-             <label class="col-sm-4 control-label" for="textinput">Ville:</label>
-            <div class="col-sm-2">
-              {{ form_widget(form.city, { 'attr': {class:'form-control'} }) }}
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="col-sm-4 control-label" for="textinput">Pc:</label>
-            <div class="col-sm-2">
-              {{ form_widget(form.pc, { 'attr': {class:'form-control'} }) }}
-            </div>
-
-            <label class="col-sm-4 control-label" for="textinput">Date:</label>
-            <div class="col-sm-2">
-              {{ form_widget(form.date, { 'attr': {'class':'input-medium date'} }) }}
-            </div>
-          </div>
-
-{{ form_widget(form.heure, { 'attr': {'class':'input-small timepicker'} }) }}
-
-    <h3>Phones:</h3>
-    <ul class="phones" data-prototype="{{ form_widget(form.phones.vars.prototype)|e }}">
-        {# iterate over each existing tag and render its only field: name #}
-        {% for phone in form.phones %}
-<div class="col-sm-2">
-            <li>
-            
+                <div class="col-sm-10">
+                    {{ form_widget(form.titles) }}
+                </div>
             </div>
 
 
-          <div class="form-group">
-            <label class="col-sm-4 control-label" for="textinput">Phone:</label>
-            <div class="col-sm-2">
-              {{ form_row(phone.phoneType, { 'attr': {'placeholder': 'Phone', 'class':'form-control'} }) }}
+
+            <div class="form-group">
+                <div class="col-sm-3">
+                    {{ form_widget(form.etat,{ 'attr': {'class':'btn btn-default dropdown-toggle'} }) }}
+                </div>
+
+                <div class="col-sm-2">
+                    {{ form_widget(form.ancien,{ 'attr': {'class':'btn btn-default dropdown-toggle'} }) }}
+                </div>
+                <div class="col-sm-2">
+                    {{ form_widget(form.service,{ 'attr': {'class':'btn btn-default dropdown-toggle'} }) }}
+                </div>
+            </div>
+            <h3>Client:</h3>
+            <div class="form-group">
+                <div class="col-sm-4">
+                    {{ form_row(form.nom, { 'attr': {'class':'form-control','placeholder': 'Nom'} }) }}
+                </div>
+
+                <div class="col-sm-4">
+                    {{ form_row(form.prenom, { 'attr': {'class':'form-control','placeholder': 'Prénom'} }) }}
+                </div>
+                <div class="col-sm-4">
+                    {{ form_row(form.email, { 'attr': {class:'form-control','placeholder': 'E-mail' } }) }}
+                </div>
             </div>
 
-            <label class="col-sm-4 control-label" for="textinput">Ancien:</label>
-            <div class="col-sm-2">
-              {{ form_row(phone.phone, { 'attr': {class:'form-control'} }) }}</li>
+
+
+            <h3>Adresse:</h3>
+            <div class="form-group">
+                <div class="col-sm-2">
+                    {{ form_widget(form.number, { 'attr': {class:'form-control','placeholder': 'Numero'} }) }}
+                </div>
+
+                <div class="col-sm-3">
+                    {{ form_widget(form.street, { 'attr': {class:'form-control','placeholder': 'Rue' } }) }}
+                </div>
+                <div class="col-sm-2">
+                    {{ form_widget(form.city, { 'attr': {class:'form-control'} }) }}
+                </div>
+                <div class="col-sm-2">
+                    {{ form_widget(form.pc, { 'attr': {class:'form-control','placeholder': 'PC',} }) }}
+                </div>
             </div>
-          </div>
-
-
-        {% endfor %}
-    </ul>
-
-          <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-              <div class="pull-right">
-                <button type="submit" class="btn btn-default">Cancel</button>
-                <button type="submit" class="btn btn-primary">Save</button>
-              </div>
+            <h3>RDV:</h3>
+            <div class="form-group">
+                <div class="col-sm-3">
+                    {{ form_widget(form.date, { 'attr': {'class':'input-medium date' ,'placeholder': 'Date de rendez-vous'} }) }}
+                </div>
+                <label class="col-sm-4 control-label" style="margin-left:35px;" for="textinput">Heure:</label>
+                <div class="col-sm-3">
+                    {{ form_widget(form.heure, { 'attr': {'class':'input-small timepicker'} }) }}
+                </div>
             </div>
-          </div>
+
+            <h3>Phones:</h3>
+            <ul class="phones" data-prototype="{{ form_widget(form.phones.vars.prototype)|e }}">
+                {# iterate over each existing tag and render its only field: name #}
+                {% for phone in form.phones %}
+                    <div class="col-sm-2">
+                        <li>
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-sm-2">
+                            {{ form_widget(phone.phoneType, { 'attr': {'placeholder': 'Phone', 'class':'form-control'} }) }}
+                        </div>
+
+                        <div class="col-sm-2">
+                            {{ form_widget(phone.phone, { 'attr': {class:'form-control'} }) }}</li>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </ul>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <div class="pull-right">
+                        <button class="btn btn-default">Cancel</button>
+
+
+                        <input type="submit" src="{{ asset('bundles/myappap/images/add.png') }}" title="Ajouter"/>
+                        {{ form_rest(form) }}
+                    </div>
+                </div>
+            </div>
 
         </fieldset>
-        {{ form_rest(form) }}
-
-      </form>
+        </form>
     </div><!-- /.col-lg-12 -->
 </div><!-- /.row -->
 

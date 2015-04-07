@@ -1,8 +1,10 @@
 {% extends 'MyAppApBundle::layout.html.twig' %}
 
-{% block title %}{{ contrat.contratEstimation }}: {{ contrat.numero|capitalize }}{% endblock %}
+{% block title %}
+    {{ contrat.client.nom|upper }} {{ contrat.client.prenom|capitalize }}
+  {% endblock %}
 {% block recherche %}
-{{ contrat.client.nom|upper }} {{ contrat.client.prenom|capitalize }}
+<span style="float: left;"><strong>  <h2 style="display: inline;">{{ contrat.contratEstimation }}: {{ contrat.numero|capitalize }}</h2></strong></span>
 {% endblock %}
 {% block page %}
  <a href="{{ path('myapp_estimation_voirClient', { 'id': contrat.client.id }) }}"><img src="{{ asset('bundles/myappap/images/user.png') }}" title="Voir Fiche client"/>
@@ -19,7 +21,6 @@
 <table>
 <tr><td>Créé le: {{ contrat.created|date('d/m/y') }}</td></tr>
 
-<tr><td><br></td></tr>
 <tr><td><b>Services:</b></td></tr>
 
         {% for s in contrat.clientService %}
@@ -91,7 +92,7 @@
 
         <tr>    
             <td>
-            <button type="submit" class="btn">Envoyer</button>
+                <input type="submit" class="btn btn-primary" value="Ajouter" />
             </td>
         </tr>
     </table>

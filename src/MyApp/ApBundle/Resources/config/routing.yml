@@ -217,6 +217,10 @@ myapp_message_ajouter:
 myapp_rdv_lister:
     pattern: /admin/rendez-vous/liste
     defaults: { _controller: MyAppApBundle:Rdv:lister}
+
+myapp_rdv_listerAnnule:
+    pattern: /admin/rendez-vous/annule
+    defaults: { _controller: MyAppApBundle:Rdv:listerAnnule}
     
 myapp_rdv_listerRdv:
     pattern: /admin/rendez-vous/liste-RDV

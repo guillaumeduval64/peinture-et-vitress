@@ -117,4 +117,5 @@ class Utilisateur extends BaseUser
     {
         return $this->group;
     }
+
 }
